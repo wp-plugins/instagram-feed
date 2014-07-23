@@ -1,0 +1,62 @@
+=== Instagram Feed ===
+Contributors: smashballoon
+Tags: Instagram, Instagram feed, Instagram photos
+Requires at least: 3.0
+Tested up to: 3.9.1
+Stable tag: 1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Add a beautifully clean, customizable, and responsive Instagram feed to your website
+
+== Description ==
+
+Display the Instagram photo feed of any non-private Instagram account.
+
+= Features =
+* Super simple to set up
+* Completely responsive and mobile ready
+* Display multiple Instagram feeds on the same page or on different pages throughout your site
+* Customize the width, height, number of columns, image size, background color, image spacing and more!
+
+Lots more features coming soon!
+
+Credit to [Instafeed.js](https://github.com/stevenschobert/instafeed.js).
+
+== Installation ==
+
+1. Install the Instagram plugin either via the WordPress plugin directory, or by uploading the files to your web server (in the `/wp-content/plugins/` directory).
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Navigate to the 'Instagram Feed' settings page to configure your Instagram feed.
+4. Use the shortcode `[instagram-feed]` in your page, post or widget to display your photos.
+5. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=1234567 cols=3 width=50%]`
+
+== Frequently Asked Questions ==
+
+= Can I display multiple Instagram feeds on my site? =
+
+Yep. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=1234567 cols=3 width=50%]`.
+
+Nope. The Access Token used in the plugin is a "read only" token, which means that it could never be used maliciously to manipulate your Instagram account.
+
+= How do I find my Instagram Access Token and User ID =
+
+We've made it super easy. Simply click on the big blue button on the Instagram plugins Settings page and log into your Instagram account. The plugin will then retrieve and display both your Access Token and User ID.
+
+You can also display photos from other peoples Instagram accounts. To find their User ID you can use [this tool](http://jelled.com/instagram/lookup-user-id).
+
+= Are there any security issues with using an Access Token on my site? =
+
+Nope. The Access Token used in the plugin is a "read only" token, which means that it could never be used maliciously to manipulate your Instagram account.
+
+== Screenshots ==
+
+1. Display your Instagram photos in multiple columns and with a scrollbar if desired.
+2. Customize the number of columns, colors and size of the feed.
+3. An example of two columns with no space between photos.
+4. The Instagram Settings page. Super simple to set up and customize.
+
+== Changelog ==
+
+= 1.0 =
+* Launch!
