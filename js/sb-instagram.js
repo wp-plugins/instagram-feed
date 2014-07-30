@@ -47,7 +47,7 @@
 		userFeed.run();
 
 		//Add target blank to content loaded in via ajax
-		$(document).on('click', 'a', function(e){
+		$(document).on('click', '#sbi_images a', function(e){
 			$(this).attr('target','_blank');
 		});
 
