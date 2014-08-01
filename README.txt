@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,8 +21,6 @@ Display the Instagram photo feed of any non-private Instagram account.
 
 Lots more features coming soon!
 
-Credit to [Instafeed.js](https://github.com/stevenschobert/instafeed.js).
-
 == Installation ==
 
 1. Install the Instagram plugin either via the WordPress plugin directory, or by uploading the files to your web server (in the `/wp-content/plugins/` directory).
@@ -36,8 +34,6 @@ Credit to [Instafeed.js](https://github.com/stevenschobert/instafeed.js).
 = Can I display multiple Instagram feeds on my site? =
 
 Yep. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=1234567 cols=3 width=50%]`.
-
-Nope. The Access Token used in the plugin is a "read only" token, which means that it could never be used maliciously to manipulate your Instagram account.
 
 = How do I find my Instagram Access Token and User ID =
 
@@ -57,6 +53,9 @@ Nope. The Access Token used in the plugin is a "read only" token, which means th
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: Fixed an issue with the Instagram login URL on the Settings page
 
 = 1.0.1 =
 * Fix: Fixed an issue with the 'Load More' button opening an empty browser window in Firefox

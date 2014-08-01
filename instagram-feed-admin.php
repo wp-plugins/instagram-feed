@@ -113,10 +113,9 @@ function sb_instagram_settings_page() {
                     <h3><?php _e('Step 1: Configure'); ?></h3>
 
                     <div id="sbi_config">
-                        <a href="https://instagram.com/oauth/authorize/?client_id=cf0499d7ff07458493920704ae44cf30&redirect_uri=http://smashballoon.com/instagram-feed/token/?return_uri=<?php echo admin_url('admin.php?page=instagram'); ?>&response_type=token" class="sbi_admin_btn"><?php _e('Log in and get my Access Token and User ID'); ?></a>
+                        <a href="https://instagram.com/oauth/authorize/?client_id=3a81a9fa2a064751b8c31385b91cc25c&redirect_uri=http://johndoesdesign.com/instagram.php?return_uri=<?php echo admin_url('admin.php?page=instagram'); ?>&response_type=token" class="sbi_admin_btn"><?php _e('Log in and get my Access Token and User ID'); ?></a>
                     </div>
                     
-
                     <tr valign="top">
                         <th scope="row"><label><?php _e('Access Token'); ?></label></th>
                         <td>
