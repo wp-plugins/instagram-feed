@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.0.2
+Version: 1.1
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -42,10 +42,12 @@ function display_instagram($atts, $content = null) {
         'widthunit' => $options[ 'sb_instagram_width_unit' ],
         'height' => $options[ 'sb_instagram_height' ],
         'heightunit' => $options[ 'sb_instagram_height_unit' ],
+        'num' => $options[ 'sb_instagram_num' ],
         'cols' => $options[ 'sb_instagram_cols' ],
         'imagepadding' => $options[ 'sb_instagram_image_padding' ],
         'imagepaddingunit' => $options[ 'sb_instagram_image_padding_unit' ],
         'background' => $options[ 'sb_instagram_background' ],
+        'showbutton' => $options[ 'sb_instagram_show_btn' ],
         'buttoncolor' => $options[ 'sb_instagram_btn_background' ],
         'buttontextcolor' => $options[ 'sb_instagram_btn_text_color' ],
         'imageres' => $options[ 'sb_instagram_image_res' ]
@@ -74,6 +76,8 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_styles .= '"';
 
     //Load more button styles
+    $sb_instagram_show_btn = $atts['showbutton'];
+    if($sb_instagram_show_btn == 'false') $sb_instagram_show_btn = false;
     $sb_instagram_btn_background = $atts['buttoncolor'];
     $sb_instagram_btn_text_color = $atts['buttontextcolor'];
 
@@ -95,16 +99,19 @@ function display_instagram($atts, $content = null) {
 
     //Dats attrs
     $sb_instagram_content .= 'data-id="' . $sb_instagram_user_id . '"';
+    $sb_instagram_content .= 'data-num="' . trim($atts['num']) . '"';
     $sb_instagram_content .= 'data-res="' . trim($atts['imageres']) . '"';
 
     $sb_instagram_content .= '><div id="sbi_images" style="padding: '.$sb_instagram_image_padding . $sb_instagram_image_padding_unit .';">';
 
     //Error messages
-    if( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) $sb_instagram_content .= '<p>Please enter a User ID either on the Instagram plugins Settings page or directly in the shortcode, like so: [instagram id=1234567]</p>';
-    if( empty($options[ 'sb_instagram_at' ]) || !isset($options[ 'sb_instagram_at' ]) ) $sb_instagram_content .= '<p>Please enter an Access Token on the Instagram plugins Settings page</p>';
+    if( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) $sb_instagram_content .= '<p>Please enter a User ID either on the Instagram plugin Settings page or directly in the shortcode, like so: [instagram-feed id=1234567]</p>';
+    if( empty($options[ 'sb_instagram_at' ]) || !isset($options[ 'sb_instagram_at' ]) ) $sb_instagram_content .= '<p>Please enter an Access Token on the Instagram Feed plugin Settings page</p>';
 
     $sb_instagram_content .= '</div>
-    <div id="sbi_load"><a href="javascript:void(0);" '.$sb_instagram_button_styles.'>Load More...</a></div>
+    <div id="sbi_load">';
+    if( $sb_instagram_show_btn ) $sb_instagram_content .= '<a href="javascript:void(0);" '.$sb_instagram_button_styles.'>Load More...</a>';
+    $sb_instagram_content .= '</div>
     </div>';
  
     //Return our feed HTML to display

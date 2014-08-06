@@ -27,6 +27,7 @@
 			target: $target,
 		    get: "user",
 		    resolution: imgres,
+		    limit: parseInt( this.getAttribute('data-num') ),
 		    // Template option breaks in IE8 and below
 		    // template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a><p>{{caption}}<br />{{comments}}<br />{{likes}}<br />{{location}}<br />{{id}}</p>',
 		    userId: parseInt( this.getAttribute('data-id') ),

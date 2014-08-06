@@ -32,12 +32,14 @@ function sb_instagram_settings_page() {
         'sb_instagram_width'                => '100',
         'sb_instagram_width_unit'           => '%',
         'sb_instagram_height'               => '',
+        'sb_instagram_num'                  => '20',
         'sb_instagram_height_unit'          => '',
         'sb_instagram_cols'                 => '',
         'sb_instagram_image_padding'        => '',
         'sb_instagram_image_padding_unit'   => '',
         // 'sb_instagram_sort'                 => '',
         'sb_instagram_background'           => '',
+        'sb_instagram_show_btn'             => true,
         'sb_instagram_btn_background'       => '',
         'sb_instagram_btn_text_color'       => '',
         'sb_instagram_image_res'            => 'full'
@@ -53,11 +55,13 @@ function sb_instagram_settings_page() {
     $sb_instagram_width_unit = $options[ 'sb_instagram_width_unit' ];
     $sb_instagram_height = $options[ 'sb_instagram_height' ];
     $sb_instagram_height_unit = $options[ 'sb_instagram_height_unit' ];
+    $sb_instagram_num = $options[ 'sb_instagram_num' ];
     $sb_instagram_cols = $options[ 'sb_instagram_cols' ];
     $sb_instagram_image_padding = $options[ 'sb_instagram_image_padding' ];
     $sb_instagram_image_padding_unit = $options[ 'sb_instagram_image_padding_unit' ];
     // $sb_instagram_sort = $options[ 'sb_instagram_sort' ];
     $sb_instagram_background = $options[ 'sb_instagram_background' ];
+    $sb_instagram_show_btn = $options[ 'sb_instagram_show_btn' ];
     $sb_instagram_btn_background = $options[ 'sb_instagram_btn_background' ];
     $sb_instagram_btn_text_color = $options[ 'sb_instagram_btn_text_color' ];
     $sb_instagram_image_res = $options[ 'sb_instagram_image_res' ];
@@ -71,11 +75,13 @@ function sb_instagram_settings_page() {
         $sb_instagram_width_unit = $_POST[ 'sb_instagram_width_unit' ];
         $sb_instagram_height = $_POST[ 'sb_instagram_height' ];
         $sb_instagram_height_unit = $_POST[ 'sb_instagram_height_unit' ];
+        $sb_instagram_num = $_POST[ 'sb_instagram_num' ];
         $sb_instagram_cols = $_POST[ 'sb_instagram_cols' ];
         $sb_instagram_image_padding = $_POST[ 'sb_instagram_image_padding' ];
         $sb_instagram_image_padding_unit = $_POST[ 'sb_instagram_image_padding_unit' ];
         // $sb_instagram_sort = $_POST[ 'sb_instagram_sort' ];
         $sb_instagram_background = $_POST[ 'sb_instagram_background' ];
+        $sb_instagram_show_btn = $_POST[ 'sb_instagram_show_btn' ];
         $sb_instagram_btn_background = $_POST[ 'sb_instagram_btn_background' ];
         $sb_instagram_btn_text_color = $_POST[ 'sb_instagram_btn_text_color' ];
         $sb_instagram_image_res = $_POST[ 'sb_instagram_image_res' ];
@@ -86,11 +92,13 @@ function sb_instagram_settings_page() {
         $options[ 'sb_instagram_width_unit' ] = $sb_instagram_width_unit;
         $options[ 'sb_instagram_height' ] = $sb_instagram_height;
         $options[ 'sb_instagram_height_unit' ] = $sb_instagram_height_unit;
+        $options[ 'sb_instagram_num' ] = $sb_instagram_num;
         $options[ 'sb_instagram_cols' ] = $sb_instagram_cols;
         $options[ 'sb_instagram_image_padding' ] = $sb_instagram_image_padding;
         $options[ 'sb_instagram_image_padding_unit' ] = $sb_instagram_image_padding_unit;
         // $options[ 'sb_instagram_sort' ] = $sb_instagram_sort;
         $options[ 'sb_instagram_background' ] = $sb_instagram_background;
+        $options[ 'sb_instagram_show_btn' ] = $sb_instagram_show_btn;
         $options[ 'sb_instagram_btn_background' ] = $sb_instagram_btn_background;
         $options[ 'sb_instagram_btn_text_color' ] = $sb_instagram_btn_text_color;
         $options[ 'sb_instagram_image_res' ] = $sb_instagram_image_res;
@@ -135,6 +143,7 @@ function sb_instagram_settings_page() {
                 </tbody>
             </table>
 
+            <?php submit_button(); ?>
             <hr />
 
             <table class="form-table">
@@ -158,6 +167,13 @@ function sb_instagram_settings_page() {
                                 <option value="px" <?php if($sb_instagram_height_unit == "px") echo 'selected="selected"' ?> ><?php _e('px'); ?></option>
                                 <option value="%" <?php if($sb_instagram_height_unit == "%") echo 'selected="selected"' ?> ><?php _e('%'); ?></option>
                             </select>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><label><?php _e('Number of Photos'); ?></label></th>
+                        <td>
+                            <input name="sb_instagram_num" type="text" value="<?php esc_attr_e( $sb_instagram_num ); ?>" size="4" />
+                            <span class="sbi_note"><?php _e('Number of photos to show initially. Maximum of 33.'); ?></span>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -223,6 +239,12 @@ function sb_instagram_settings_page() {
                         </td>
                     </tr>
                     <tr valign="top">
+                        <th scope="row"><label><?php _e("Show the 'Load More' button"); ?></label></th>
+                        <td>
+                            <input type="checkbox" name="sb_instagram_show_btn" id="sb_instagram_show_btn" <?php if($sb_instagram_show_btn == true) echo 'checked="checked"' ?> />
+                        </td>
+                    </tr>
+                    <tr valign="top">
                         <th scope="row"><label><?php _e('Button Background Color'); ?></label></th>
                         <td>
                             <input name="sb_instagram_btn_background" type="text" value="<?php esc_attr_e( $sb_instagram_btn_background ); ?>" class="sbi_colorpick" />
@@ -241,6 +263,95 @@ function sb_instagram_settings_page() {
             <?php submit_button(); ?>
 
         </form>
+
+        <hr />
+
+        <h3><?php _e('Step 3: Displaying your Feed'); ?></h3>
+        <p><?php _e("Copy and paste the following shortcode directly into the page, post or widget where you'd like the feed to show up:"); ?></p>
+        <input type="text" value="[instagram-feed]" size="16" readonly="readonly" style="text-align: center;" onclick="this.focus();this.select()" title="<?php _e('To copy, click the field then press Ctrl + C (PC) or Cmd + C (Mac).'); ?>" />
+
+        <p><?php _e("If you'd like to display multiple feeds then you can set different settings directly in the shortcode like so:"); ?>
+        <code>[instagram-feed num=9 cols=3]</code></p>
+        <p><?php _e("See the table below for a full list of available shortcode options:"); ?></p>
+
+        <table class="sbi_shortcode_table">
+            <tbody>
+                <tr valign="top">
+                    <th scope="row"><?php _e('Shortcode option'); ?></th>
+                    <th scope="row"><?php _e('Description'); ?></th>
+                    <th scope="row"><?php _e('Example'); ?></th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td><?php _e('An Instagram User ID'); ?></td>
+                    <td><code>[instagram-feed id=1234567]</code></td>
+                </tr>
+                    <td>width</td>
+                    <td>The width of your feed. Any number.</td>
+                    <td><code>[instagram-feed width=50]</code></td>
+                </tr>
+                <tr>
+                    <td>widthunit</td>
+                    <td>The unit of the width. 'px' or '%'</td>
+                    <td><code>[instagram-feed widthunit=%]</code></td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>The height of your feed. Any number.</td>
+                    <td><code>[instagram-feed height=250]</code></td>
+                </tr>
+                <tr>
+                    <td>heightunit</td>
+                    <td>The unit of the height. 'px' or '%'</td>
+                    <td><code>[instagram-feed heightunit=px]</code></td>
+                </tr>
+                <tr>
+                    <td>num</td>
+                    <td>The number of photos to display initially. Maximum is 33.</td>
+                    <td><code>[instagram-feed num=10]</code></td>
+                </tr>
+                <tr>
+                    <td>cols</td>
+                    <td>The number of columns in your feed. 1 - 10.</td>
+                    <td><code>[instagram-feed cols=5]</code></td>
+                </tr>
+                <tr>
+                    <td>imagepadding</td>
+                    <td>The spacing around your photos</td>
+                    <td><code>[instagram-feed imagepadding=10]</code></td>
+                </tr>
+                <tr>
+                    <td>imagepaddingunit</td>
+                    <td>The unit of the padding. 'px' or '%'</td>
+                    <td><code>[instagram-feed imagepadding=px]</code></td>
+                </tr>
+                <tr>
+                    <td>background</td>
+                    <td>The background color of the feed. Any hex color code.</td>
+                    <td><code>[instagram-feed background=#ffff00]</code></td>
+                </tr>
+                <tr>
+                    <td>showbutton</td>
+                    <td>Whether to show the 'Load More' button. 'true' or 'false'.</td>
+                    <td><code>[instagram-feed showbutton='false']</code></td>
+                </tr>
+                <tr>
+                    <td>buttoncolor</td>
+                    <td>The background color of the button. Any hex color code.</td>
+                    <td><code>[instagram-feed buttoncolor=#000]</code></td>
+                </tr>
+                <tr>
+                    <td>buttontextcolor</td>
+                    <td>The text color of the button. Any hex color code.</td>
+                    <td><code>[instagram-feed buttontextcolor=#fff]</code></td>
+                </tr>
+                <tr>
+                    <td>imageres</td>
+                    <td>The resolution/size of the photos. 'full', 'medium' or 'thumb'.</td>
+                    <td><code>[instagram-feed imageres=full]</code></td>
+                </tr>
+            </tbody>
+        </table>
     </div> <!-- end #admin -->
 
 <?php
