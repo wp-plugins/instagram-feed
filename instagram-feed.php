@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1
+Version: 1.1.1
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -95,14 +95,9 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_content = '<div id="sb_instagram" class="sbi ';
     if ( !empty($sb_instagram_height) ) $sb_instagram_content .= 'sbi_fixed_height ';
     $sb_instagram_content .= 'sbi_col_' . trim($sb_instagram_cols);
-    $sb_instagram_content .= '" '.$sb_instagram_styles;
+    $sb_instagram_content .= '" '.$sb_instagram_styles .' data-id="' . $sb_instagram_user_id . '" data-num="' . trim($atts['num']) . '" data-res="' . trim($atts['imageres']) . '">';
 
-    //Dats attrs
-    $sb_instagram_content .= 'data-id="' . $sb_instagram_user_id . '"';
-    $sb_instagram_content .= 'data-num="' . trim($atts['num']) . '"';
-    $sb_instagram_content .= 'data-res="' . trim($atts['imageres']) . '"';
-
-    $sb_instagram_content .= '><div id="sbi_images" style="padding: '.$sb_instagram_image_padding . $sb_instagram_image_padding_unit .';">';
+    $sb_instagram_content .= '<div id="sbi_images" style="padding: '.$sb_instagram_image_padding . $sb_instagram_image_padding_unit .';">';
 
     //Error messages
     if( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) $sb_instagram_content .= '<p>Please enter a User ID either on the Instagram plugin Settings page or directly in the shortcode, like so: [instagram-feed id=1234567]</p>';

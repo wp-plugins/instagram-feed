@@ -2,8 +2,8 @@
 Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin
 Requires at least: 3.0
-Tested up to: 3.9.1
-Stable tag: 1.1
+Tested up to: 4.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Nope. The Access Token used in the plugin is a "read only" token, which means th
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+
+= 1.1.1 =
+* Pre-tested for the upcoming WordPress 4.0 update
+* Fix: Fixed an uncommon issue related to the output of the Instagram content
 
 = 1.1 =
 * New: Added an option to set the number of photos to be initially displayed
