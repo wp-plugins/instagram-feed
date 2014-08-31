@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,7 +111,7 @@ The below options are available on the Instagram Feed Settings page but can also
 
 == Changelog ==
 
-= 1.1.2 =
+= 1.1.3 =
 * Fix: Fixed an issue with the maximum image width
 * Fix: Corrected a typo in the Shortcode Options table
 
