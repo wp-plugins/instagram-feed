@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,15 @@ You can also display photos from other peoples Instagram accounts. To find their
 
 Nope. The Access Token used in the plugin is a "read only" token, which means that it could never be used maliciously to manipulate your Instagram account.
 
+= My Instagram feed isn't display. Why not!? =
+
+There are 2 common reasons for this:
+
+* Your Instagram account is set to private. Instagram doesn't allow photos from private Instagram accounts to be displayed publicly.
+* Your website contains a JavaScript error which is preventing JavaScript from running. The plugin uses JavaScript to load the Instagram photos into your page and so needs JavaScript to be running in order to work. You would need to remove any existing JavaScript errors on your website for the plugin to be able to load in your feed.
+
+If you're still having an issue displaying your feed then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum') with a link to the page where you're trying to display the feed and, if possible, a link to your Instagram account.
+
 = What are the available shortcode options that I can use to customize my Instagram feed? =
 
 The below options are available on the Instagram Feed Settings page but can also be used directly in the `[instagram-feed]` shortcode to customize individual Instagram feeds on a feed-by-feed basis.
@@ -101,6 +110,10 @@ The below options are available on the Instagram Feed Settings page but can also
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+
+= 1.1.2 =
+* Fix: Fixed an issue with the maximum image width
+* Fix: Corrected a typo in the Shortcode Options table
 
 = 1.1.1 =
 * Pre-tested for the upcoming WordPress 4.0 update

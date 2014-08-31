@@ -323,7 +323,7 @@ function sb_instagram_settings_page() {
                 <tr>
                     <td>imagepaddingunit</td>
                     <td>The unit of the padding. 'px' or '%'</td>
-                    <td><code>[instagram-feed imagepadding=px]</code></td>
+                    <td><code>[instagram-feed imagepaddingunit=px]</code></td>
                 </tr>
                 <tr>
                     <td>background</td>
