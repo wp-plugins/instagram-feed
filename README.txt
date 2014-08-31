@@ -1,6 +1,6 @@
 === Instagram Feed ===
 Contributors: smashballoon
-Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin
+Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.1.1
