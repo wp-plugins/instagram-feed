@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1.1
+Version: 1.1.2
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -120,7 +120,7 @@ function display_instagram($atts, $content = null) {
 //Enqueue stylesheet
 add_action( 'wp_enqueue_scripts', 'sb_instagram_styles_enqueue' );
 function sb_instagram_styles_enqueue() {
-    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css', __FILE__) );
+    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css?1', __FILE__) );
     wp_enqueue_style( 'sb_instagram_styles' );
 }
 
@@ -128,7 +128,7 @@ function sb_instagram_styles_enqueue() {
 add_action( 'wp_enqueue_scripts', 'sb_instagram_scripts_enqueue' );
 function sb_instagram_scripts_enqueue() {
     //Register the script to make it available
-    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?1' , __FILE__ ), array('jquery'), '1.8', true );
+    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?2' , __FILE__ ), array('jquery'), '1.8', true );
 
     //Options to pass to JS file
     $sb_instagram_settings = get_option('sb_instagram_settings');
