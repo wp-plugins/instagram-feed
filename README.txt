@@ -14,10 +14,23 @@ Add a beautifully clean, customizable, and responsive Instagram feed to your web
 Display the Instagram photo feed of any non-private Instagram account.
 
 = Features =
-* Super simple to set up
-* Completely responsive and mobile ready
-* Display multiple Instagram feeds on the same page or on different pages throughout your site
-* Customize the width, height, number of phtos, number of columns, image size, background color, image spacing and more!
+* Super **simple to set up**
+* Completely **responsive** and mobile ready - layout looks great on any screen size and in any container width
+* **Completely customizable** - Customize the width, height, number of photos, number of columns, image size, background color, image spacing and more!
+* Display **multiple Instagram feeds** on the same page or on different pages throughout your site
+* Use the built-in **shortcode options** to completely customize each of your Instagram feeds
+* Display thumbnail, medium or **full-size photos** from your Instagram feed
+* **Infinitely load more** of your Instagram photos with the 'Load More' button
+
+= Benefits =
+* Increase your Instagram followers by displaying your Instagram content on your website
+* Save time and increase efficiency by only posting your photos to Instagram and automatically displaying them on your website
+
+= Featured Review =
+"**Great instagram plugin & support** - Was looking for a plugin that gave me control over how it displayed (specifically, 3-columns). This plugin did the trick quite nicely! And when I had a minor issue with obtaining the code I needed from Instagram to get it working, a quick email to support at smash balloon was replied to within hours. Good plugin, good support!" - [olivmich](http://wordpress.org/support/topic/great-instagram-plugin-support 'Great instagram plugin & support')
+
+= Feedback or Support =
+We're dedicated to providing the most customizable, robust and well supported Instagram feed plugin in the world, so if you have an issue or have any feedback on how to improve the plugin then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum').
 
 Lots more features coming soon!
 
@@ -27,13 +40,29 @@ Lots more features coming soon!
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate to the 'Instagram Feed' settings page to configure your Instagram feed.
 4. Use the shortcode `[instagram-feed]` in your page, post or widget to display your photos.
-5. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=1234567 cols=3 width=50 widthunit=%]`
+5. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=YOUR_USER_ID_HERE cols=3 width=50 widthunit=%]`
+
+= Shortcode Options =
+* **id** - An Instagram User ID - Example: `[instagram-feed id=1234567]`
+* **width** - The width of your feed. Any number - Example: `[instagram-feed width=50]`
+* **widthunit** - The unit of the width. 'px' or '%' - Example: `[instagram-feed widthunit=%]`
+* **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
+* **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
+* **num** - The number of photos to display initially. Maximum is 33 - Example: `[instagram-feed num=10]`
+* **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
+* **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
+* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepadding=px]`
+* **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
+* **showbutton** - Whether to show the 'Load More' button. 'true' or 'false' - Example: `[instagram-feed showbutton='false']`
+* **buttoncolor** - The background color of the button. Any hex color code - Example: `[instagram-feed buttoncolor=#000]`
+* **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
+* **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
 
 == Frequently Asked Questions ==
 
-= Can I display multiple Instagram feeds on my site? =
+= Can I display multiple Instagram feeds on my site or on the same page? =
 
-Yep. You can display multiple Instagram feeds by using shortcode options, for example: `[instagram-feed id=1234567 cols=3 width=50 widthunit=%]`.
+Yep. You can display multiple Instagram feeds by using our built-in shortcode options, for example: `[instagram-feed id=YOUR_USER_ID_HERE cols=3 width=50 widthunit=%]`.
 
 = How do I find my Instagram Access Token and User ID =
 
@@ -45,10 +74,29 @@ You can also display photos from other peoples Instagram accounts. To find their
 
 Nope. The Access Token used in the plugin is a "read only" token, which means that it could never be used maliciously to manipulate your Instagram account.
 
+= What are the available shortcode options that I can use to customize my Instagram feed? =
+
+The below options are available on the Instagram Feed Settings page but can also be used directly in the `[instagram-feed]` shortcode to customize individual Instagram feeds on a feed-by-feed basis.
+
+* **id** - An Instagram User ID - Example: `[instagram-feed id=1234567]`
+* **width** - The width of your feed. Any number - Example: `[instagram-feed width=50]`
+* **widthunit** - The unit of the width. 'px' or '%' - Example: `[instagram-feed widthunit=%]`
+* **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
+* **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
+* **num** - The number of photos to display initially. Maximum is 33 - Example: `[instagram-feed num=10]`
+* **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
+* **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
+* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepadding=px]`
+* **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
+* **showbutton** - Whether to show the 'Load More' button. 'true' or 'false' - Example: `[instagram-feed showbutton='false']`
+* **buttoncolor** - The background color of the button. Any hex color code - Example: `[instagram-feed buttoncolor=#000]`
+* **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
+* **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
+
 == Screenshots ==
 
 1. Display your Instagram photos in multiple columns and with a scrollbar if desired.
-2. Customize the number of columns, colors and size of the Instagram feed.
+2. Customize the number of columns, colors and size of your Instagram feed.
 3. An example of two columns with no space between photos.
 4. The Instagram Settings page. Super simple to set up and customize.
 
@@ -59,10 +107,10 @@ Nope. The Access Token used in the plugin is a "read only" token, which means th
 * Fix: Fixed an uncommon issue related to the output of the Instagram content
 
 = 1.1 =
-* New: Added an option to set the number of photos to be initially displayed
+* New: Added an option to set the number of Instagram photos to be initially displayed
 * New: Added an option to show or hide the 'Load More' button
 * New: Added 'Step 3' to the Settings page explaining how to display your feed using the [instagram-feed] shortcode
-* New: Added a full list of all available shortcode options to help you if customizing multiple feeds
+* New: Added a full list of all available shortcode options to help you if customizing multiple Instagram feeds
 
 = 1.0.2 =
 * Fix: Fixed an issue with the Instagram login URL on the Settings page
@@ -71,4 +119,4 @@ Nope. The Access Token used in the plugin is a "read only" token, which means th
 * Fix: Fixed an issue with the 'Load More' button opening an empty browser window in Firefox
 
 = 1.0 =
-* Launch!
+* Launched the Instagram Feed plugin!
