@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1.3
+Version: 1.1.4
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
