@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,10 @@ There are 2 common reasons for this:
 
 If you're still having an issue displaying your feed then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum') with a link to the page where you're trying to display the feed and, if possible, a link to your Instagram account.
 
+= How do I embed my Instagram Feed directly into a WordPress page template? =
+
+You can embed your Instagram feed directly into a template file by using the WordPress [do_shortcode](http://codex.wordpress.org/Function_Reference/do_shortcode) function: `<?php echo do_shortcode('[instagram-feed]'); ?>`.
+
 = What are the available shortcode options that I can use to customize my Instagram feed? =
 
 The below options are available on the Instagram Feed Settings page but can also be used directly in the `[instagram-feed]` shortcode to customize individual Instagram feeds on a feed-by-feed basis.
@@ -110,6 +114,9 @@ The below options are available on the Instagram Feed Settings page but can also
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+
+= 1.1.5 =
+* Fix: Added a line of code which enables shortcodes to be used in widgets for themes which don't have it enabled
 
 = 1.1.4 =
 * Fix: Fixed an issue with the Access Token and User ID retrieval functionality in certain web browsers

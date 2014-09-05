@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1.4
+Version: 1.1.5
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -116,6 +116,9 @@ function display_instagram($atts, $content = null) {
 
 
 #############################
+
+//Allows shortcodes in theme
+add_filter('widget_text', 'do_shortcode');
 
 //Enqueue stylesheet
 add_action( 'wp_enqueue_scripts', 'sb_instagram_styles_enqueue' );
