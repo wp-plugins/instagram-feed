@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,10 @@ The below options are available on the Instagram Feed Settings page but can also
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+
+= 1.1.6 =
+* Fix: A maximum width is now only applied to the feed when the photos are displayed in one column
+* Added a banner to the settings page promoting our free [Custom Facebook Feed](http://wordpress.org/plugins/custom-facebook-feed/) plugin
 
 = 1.1.5 =
 * Fix: Added a line of code which enables shortcodes to be used in widgets for themes which don't have it enabled

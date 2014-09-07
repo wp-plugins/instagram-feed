@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1.5
+Version: 1.1.6
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -68,7 +68,11 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_image_padding_unit = $atts['imagepaddingunit'];
     $sb_instagram_background = $atts['background'];
 
+    //Layout options
+    $sb_instagram_cols = $atts['cols'];
+
     $sb_instagram_styles = 'style="';
+    if($sb_instagram_cols == 1) $sb_instagram_styles .= 'max-width: 640px; ';
     if ( !empty($sb_instagram_width) ) $sb_instagram_styles .= 'width:' . $sb_instagram_width . $sb_instagram_width_unit .'; ';
     if ( !empty($sb_instagram_height) && $sb_instagram_height != '0' ) $sb_instagram_styles .= 'height:' . $sb_instagram_height . $sb_instagram_height_unit .'; ';
     if ( !empty($sb_instagram_background) ) $sb_instagram_styles .= 'background-color: ' . $sb_instagram_background . '; ';
@@ -85,9 +89,6 @@ function display_instagram($atts, $content = null) {
     if ( !empty($sb_instagram_btn_background) ) $sb_instagram_button_styles .= 'background: '.$sb_instagram_btn_background.'; ';
     if ( !empty($sb_instagram_btn_text_color) ) $sb_instagram_button_styles .= 'color: '.$sb_instagram_btn_text_color.';';
     $sb_instagram_button_styles .= '"';
-
-    //Layout options
-    $sb_instagram_cols = $atts['cols'];
 
 
     /******************* CONTENT ********************/

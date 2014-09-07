@@ -200,7 +200,7 @@ function sb_instagram_settings_page() {
                         <td>
 
                             <select name="sb_instagram_image_res">
-                                <option value="full" <?php if($sb_instagram_image_res == "full") echo 'selected="selected"' ?> ><?php _e('Full size (612x612)'); ?></option>
+                                <option value="full" <?php if($sb_instagram_image_res == "full") echo 'selected="selected"' ?> ><?php _e('Full size (640x640)'); ?></option>
                                 <option value="medium" <?php if($sb_instagram_image_res == "medium") echo 'selected="selected"' ?> ><?php _e('Medium (306x306)'); ?></option>
                                 <option value="thumb" <?php if($sb_instagram_image_res == "thumb") echo 'selected="selected"' ?> ><?php _e('Thumbnail (150x150)'); ?></option>
                             </select>
@@ -352,6 +352,10 @@ function sb_instagram_settings_page() {
                 </tr>
             </tbody>
         </table>
+
+        <a href="http://wordpress.org/plugins/custom-facebook-feed/" target="_blank" style="display: block; margin: 20px 0 0 0;">
+            <img src="<?php echo plugins_url( 'img/cff-promo.png' , __FILE__ ) ?>" alt="The Custom Facebook Feed plugin">
+        </a>
     </div> <!-- end #admin -->
 
 <?php
