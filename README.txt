@@ -83,6 +83,10 @@ There are 2 common reasons for this:
 
 If you're still having an issue displaying your feed then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum') with a link to the page where you're trying to display the feed and, if possible, a link to your Instagram account.
 
+= Can I view the full-size photos directly on my website?  =
+
+This is a feature of the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, display captions, display photos by hashtag + more!
+
 = How do I embed my Instagram Feed directly into a WordPress page template? =
 
 You can embed your Instagram feed directly into a template file by using the WordPress [do_shortcode](http://codex.wordpress.org/Function_Reference/do_shortcode) function: `<?php echo do_shortcode('[instagram-feed]'); ?>`.
