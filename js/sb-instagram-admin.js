@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	
 	//Tooltips
 	jQuery('#sbi_admin .sbi_tooltip_link').click(function(){
-		jQuery(this).closest('tr').find('.sbi_tooltip').slideToggle();
+		jQuery(this).siblings('.sbi_tooltip').slideToggle();
 	});
 
     //Add the color picker

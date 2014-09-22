@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.1.6
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,8 @@ Display the Instagram photo feed of any non-private Instagram account.
 * Use the built-in **shortcode options** to completely customize each of your Instagram feeds
 * Display thumbnail, medium or **full-size photos** from your Instagram feed
 * **Infinitely load more** of your Instagram photos with the 'Load More' button
+* Display your Instagram photos chronologically or in random order
+* Add your own Custom CSS and JavaScript
 
 = Benefits =
 * Increase your Instagram followers by displaying your Instagram content on your website
@@ -32,7 +34,7 @@ Display the Instagram photo feed of any non-private Instagram account.
 = Feedback or Support =
 We're dedicated to providing the most customizable, robust and well supported Instagram feed plugin in the world, so if you have an issue or have any feedback on how to improve the plugin then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum').
 
-Lots more features coming soon!
+For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo **captions** + more, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Installation ==
 
@@ -48,15 +50,18 @@ Lots more features coming soon!
 * **widthunit** - The unit of the width. 'px' or '%' - Example: `[instagram-feed widthunit=%]`
 * **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
 * **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
+* **sortby** - Sort the posts by Newest to Oldest (none) or Random (random) - Example: `[instagram-feed sortby=random]`
 * **num** - The number of photos to display initially. Maximum is 33 - Example: `[instagram-feed num=10]`
 * **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
 * **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
-* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepadding=px]`
+* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepaddingunit=px]`
 * **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
 * **showbutton** - Whether to show the 'Load More' button. 'true' or 'false' - Example: `[instagram-feed showbutton='false']`
 * **buttoncolor** - The background color of the button. Any hex color code - Example: `[instagram-feed buttoncolor=#000]`
 * **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
 * **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
+
+For more shortcode options, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Frequently Asked Questions ==
 
@@ -83,6 +88,10 @@ There are 2 common reasons for this:
 
 If you're still having an issue displaying your feed then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum') with a link to the page where you're trying to display the feed and, if possible, a link to your Instagram account.
 
+= Can I view the full-size photos directly on my website?  =
+
+This is a feature of the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, display captions, display photos by hashtag + more!
+
 = How do I embed my Instagram Feed directly into a WordPress page template? =
 
 You can embed your Instagram feed directly into a template file by using the WordPress [do_shortcode](http://codex.wordpress.org/Function_Reference/do_shortcode) function: `<?php echo do_shortcode('[instagram-feed]'); ?>`.
@@ -96,15 +105,18 @@ The below options are available on the Instagram Feed Settings page but can also
 * **widthunit** - The unit of the width. 'px' or '%' - Example: `[instagram-feed widthunit=%]`
 * **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
 * **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
+* **sortby** - Sort the posts by Newest to Oldest (none) or Random (random) - Example: `[instagram-feed sortby=random]`
 * **num** - The number of photos to display initially. Maximum is 33 - Example: `[instagram-feed num=10]`
 * **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
 * **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
-* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepadding=px]`
+* **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepaddingunit=px]`
 * **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
 * **showbutton** - Whether to show the 'Load More' button. 'true' or 'false' - Example: `[instagram-feed showbutton='false']`
 * **buttoncolor** - The background color of the button. Any hex color code - Example: `[instagram-feed buttoncolor=#000]`
 * **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
 * **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
+
+For more shortcode options, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Screenshots ==
 
@@ -115,18 +127,27 @@ The below options are available on the Instagram Feed Settings page but can also
 
 == Changelog ==
 
+= 1.2 =
+* New: Added Custom CSS and Custom JavaScript sections which allow you to add your own custom CSS and JavaScript to the plugin
+* New: Added an option to display your Instagram photos in random order
+* New: A new tabbed layout has been implemented on the plugin's settings pages
+* New: Added an option to preserve your settings when uninstalling the plugin
+* New: Added a [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin which allows you to display photos by hashtag, display captions, view photos in a pop-up lightbox, show the number of likes & comments and more
+* Tweak: The 'Load More' button now automatically hides if there are no more photos to load
+* Tweak: Added a small gap to the top of the 'Load More' button
+* Tweak: Added a icon to the Instagram Feed menu item
+
 = 1.1.6 =
 * Fix: A maximum width is now only applied to the feed when the photos are displayed in one column
-* Added a banner to the settings page promoting our free [Custom Facebook Feed](http://wordpress.org/plugins/custom-facebook-feed/) plugin
 
 = 1.1.5 =
 * Fix: Added a line of code which enables shortcodes to be used in widgets for themes which don't have it enabled
 
 = 1.1.4 =
-* Fix: Fixed an issue with the Access Token and User ID retrieval functionality in certain web browsers
+* Fix: Fixed an issue with the Instagram Access Token and User ID retrieval functionality in certain web browsers
 
 = 1.1.3 =
-* Fix: Fixed an issue with the maximum image width
+* Fix: Fixed an issue with the maximum Instagram image width
 * Fix: Corrected a typo in the Shortcode Options table
 
 = 1.1.1 =
@@ -136,14 +157,14 @@ The below options are available on the Instagram Feed Settings page but can also
 = 1.1 =
 * New: Added an option to set the number of Instagram photos to be initially displayed
 * New: Added an option to show or hide the 'Load More' button
-* New: Added 'Step 3' to the Settings page explaining how to display your feed using the [instagram-feed] shortcode
+* New: Added 'Step 3' to the Instagram Feed Settings page explaining how to display your feed using the [instagram-feed] shortcode
 * New: Added a full list of all available shortcode options to help you if customizing multiple Instagram feeds
 
 = 1.0.2 =
 * Fix: Fixed an issue with the Instagram login URL on the Settings page
 
 = 1.0.1 =
-* Fix: Fixed an issue with the 'Load More' button opening an empty browser window in Firefox
+* Fix: Fixed an issue with the Instagram Feed 'Load More' button opening an empty browser window in Firefox
 
 = 1.0 =
 * Launched the Instagram Feed plugin!

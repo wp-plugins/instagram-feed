@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.1.6
+Version: 1.2
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -42,6 +42,7 @@ function display_instagram($atts, $content = null) {
         'widthunit' => $options[ 'sb_instagram_width_unit' ],
         'height' => $options[ 'sb_instagram_height' ],
         'heightunit' => $options[ 'sb_instagram_height_unit' ],
+        'sortby' => $options[ 'sb_instagram_sort' ],
         'num' => $options[ 'sb_instagram_num' ],
         'cols' => $options[ 'sb_instagram_cols' ],
         'imagepadding' => $options[ 'sb_instagram_image_padding' ],
@@ -50,7 +51,7 @@ function display_instagram($atts, $content = null) {
         'showbutton' => $options[ 'sb_instagram_show_btn' ],
         'buttoncolor' => $options[ 'sb_instagram_btn_background' ],
         'buttontextcolor' => $options[ 'sb_instagram_btn_text_color' ],
-        'imageres' => $options[ 'sb_instagram_image_res' ]
+        'imageres' => $options[ 'sb_instagram_image_res' ],
     ), $atts);
 
 
@@ -81,7 +82,7 @@ function display_instagram($atts, $content = null) {
 
     //Load more button styles
     $sb_instagram_show_btn = $atts['showbutton'];
-    if($sb_instagram_show_btn == 'false') $sb_instagram_show_btn = false;
+    if($sb_instagram_show_btn === 'false') $sb_instagram_show_btn = false;
     $sb_instagram_btn_background = $atts['buttoncolor'];
     $sb_instagram_btn_text_color = $atts['buttontextcolor'];
 
@@ -96,19 +97,20 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_content = '<div id="sb_instagram" class="sbi ';
     if ( !empty($sb_instagram_height) ) $sb_instagram_content .= 'sbi_fixed_height ';
     $sb_instagram_content .= 'sbi_col_' . trim($sb_instagram_cols);
-    $sb_instagram_content .= '" '.$sb_instagram_styles .' data-id="' . $sb_instagram_user_id . '" data-num="' . trim($atts['num']) . '" data-res="' . trim($atts['imageres']) . '">';
+    $sb_instagram_content .= '" '.$sb_instagram_styles .' data-id="' . $sb_instagram_user_id . '" data-num="' . trim($atts['num']) . '" data-res="' . trim($atts['imageres']) . '" data-options="{&quot;sortby&quot;: &quot;'.$atts['sortby'].'&quot;}">';
 
     $sb_instagram_content .= '<div id="sbi_images" style="padding: '.$sb_instagram_image_padding . $sb_instagram_image_padding_unit .';">';
 
     //Error messages
-    if( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) $sb_instagram_content .= '<p>Please enter a User ID either on the Instagram plugin Settings page or directly in the shortcode, like so: [instagram-feed id=1234567]</p>';
+    if( $sb_instagram_type == 'user' && ( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) ) $sb_instagram_content .= '<p>Please enter a User ID on the Instagram plugin Settings page</p>';
+
     if( empty($options[ 'sb_instagram_at' ]) || !isset($options[ 'sb_instagram_at' ]) ) $sb_instagram_content .= '<p>Please enter an Access Token on the Instagram Feed plugin Settings page</p>';
 
-    $sb_instagram_content .= '</div>
-    <div id="sbi_load">';
+    $sb_instagram_content .= '</div><div id="sbi_load"';
+    if($sb_instagram_image_padding == 0 || !isset($sb_instagram_image_padding)) $sb_instagram_content .= ' style="padding-top: 5px"';
+    $sb_instagram_content .= '>';
     if( $sb_instagram_show_btn ) $sb_instagram_content .= '<a href="javascript:void(0);" '.$sb_instagram_button_styles.'>Load More...</a>';
-    $sb_instagram_content .= '</div>
-    </div>';
+    $sb_instagram_content .= '</div></div>';
  
     //Return our feed HTML to display
     return $sb_instagram_content;
@@ -124,7 +126,7 @@ add_filter('widget_text', 'do_shortcode');
 //Enqueue stylesheet
 add_action( 'wp_enqueue_scripts', 'sb_instagram_styles_enqueue' );
 function sb_instagram_styles_enqueue() {
-    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css?1', __FILE__) );
+    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css?2', __FILE__) );
     wp_enqueue_style( 'sb_instagram_styles' );
 }
 
@@ -132,13 +134,12 @@ function sb_instagram_styles_enqueue() {
 add_action( 'wp_enqueue_scripts', 'sb_instagram_scripts_enqueue' );
 function sb_instagram_scripts_enqueue() {
     //Register the script to make it available
-    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?2' , __FILE__ ), array('jquery'), '1.8', true );
+    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?3' , __FILE__ ), array('jquery'), '1.8', true );
 
     //Options to pass to JS file
     $sb_instagram_settings = get_option('sb_instagram_settings');
     $data = array(
         'sb_instagram_at' => trim($sb_instagram_settings['sb_instagram_at'])
-        // 'sb_instagram_user_id' => trim($sb_instagram_settings['sb_instagram_user_id'])
     );
 
     //Enqueue it to load it onto the page
@@ -148,16 +149,58 @@ function sb_instagram_scripts_enqueue() {
     wp_localize_script('sb_instagram_scripts', 'sb_instagram_js_options', $data);
 }
 
+//Custom CSS
+add_action( 'wp_head', 'sb_instagram_custom_css' );
+function sb_instagram_custom_css() {
+    $options = get_option('sb_instagram_settings');
+
+    $sb_instagram_custom_css = $options[ 'sb_instagram_custom_css' ];
+    if( !empty($sb_instagram_custom_css) ) echo '<!-- Instagram Feed CSS -->';
+    if( !empty($sb_instagram_custom_css) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_css) ) echo '<style type="text/css">';
+    if( !empty($sb_instagram_custom_css) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_css) ) echo stripslashes($sb_instagram_custom_css);
+    if( !empty($sb_instagram_custom_css) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_css) ) echo '</style>';
+    if( !empty($sb_instagram_custom_css) ) echo "\r\n";
+}
+
+//Custom JS
+add_action( 'wp_footer', 'sb_instagram_custom_js' );
+function sb_instagram_custom_js() {
+    $options = get_option('sb_instagram_settings');
+    $sb_instagram_custom_js = $options[ 'sb_instagram_custom_js' ];
+
+    if( !empty($sb_instagram_custom_js) ) echo '<!-- Instagram Feed JS -->';
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo '<script type="text/javascript">';
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo "jQuery( document ).ready(function($) {";
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo stripslashes($sb_instagram_custom_js);
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo "});";
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo '</script>';
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+}
+
+
 //Uninstall
 function sb_instagram_uninstall()
 {
     if ( ! current_user_can( 'activate_plugins' ) )
         return;
+
+    //If the user is preserving the settings then don't delete them
+    $options = get_option('sb_instagram_settings');
+    $sb_instagram_preserve_settings = $options[ 'sb_instagram_preserve_settings' ];
+    if($sb_instagram_preserve_settings) return;
+
     //Settings
     delete_option( 'sb_instagram_settings' );
 }
 register_uninstall_hook( __FILE__, 'sb_instagram_uninstall' );
 
-
-// error_reporting(~0);
+//error_reporting(0);
 ?>
