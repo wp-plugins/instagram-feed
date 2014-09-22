@@ -32,7 +32,8 @@ Display the Instagram photo feed of any non-private Instagram account.
 = Feedback or Support =
 We're dedicated to providing the most customizable, robust and well supported Instagram feed plugin in the world, so if you have an issue or have any feedback on how to improve the plugin then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum').
 
-For a pop-up photo lightbox, to display posts by hashtag, to show photo captions, show photos in random order + more, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
+= Pro Version Available =
+For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo **captions**, show photos in **random order** + more, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Installation ==
 
