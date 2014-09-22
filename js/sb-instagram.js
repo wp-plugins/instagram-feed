@@ -40,7 +40,7 @@
 		    sortBy: feedOptions.sortby,
 		    resolution: imgRes,
 		    limit: parseInt( this.getAttribute('data-num') ),
-		    template: '<div class="sbi_item"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}"><img src="{{image}}" alt="{{image}}" /></a></div></div>',
+		    template: '<div class="sbi_item"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{image}}" /></a></div></div>',
 		    userId: parseInt( this.getAttribute('data-id') ),
 		    accessToken: sb_instagram_js_options.sb_instagram_at,
 		    after: function() {
