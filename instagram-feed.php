@@ -202,5 +202,5 @@ function sb_instagram_uninstall()
 }
 register_uninstall_hook( __FILE__, 'sb_instagram_uninstall' );
 
-//error_reporting(0);
+error_reporting(0);
 ?>
