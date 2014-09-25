@@ -188,7 +188,7 @@ function sb_instagram_settings_page() {
                             <span class="sbi_pro">
                                 <input disabled type="radio" name="sb_instagram_type" id="sb_instagram_type_hashtag" value="hashtag" <?php if($sb_instagram_type == "hashtag") echo "checked"; ?> />
                                 <label class="sbi_radio_label" for="sb_instagram_type_hashtag">Hashtag:</label>
-                                <input readonly name="sb_instagram_hashtag" id="sb_instagram_hashtag" type="text" value="<?php esc_attr_e( $sb_instagram_hashtag ); ?>" size="25" />
+                                <input readonly type="text" size="25" />
                                 &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a><span class="sbi_note"><a href="https://smashballoon.com/instagram-feed/" target="_blank">- Upgrade to Pro to show posts by Hashtag</a></span>
                                 <p class="sbi_tooltip"><?php _e("Display posts from a specific hashtag instead of from a user"); ?></p>
                             </span>

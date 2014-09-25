@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Add a simple customizable Instagram feed to your website
-Version: 1.2
+Version: 1.2.1
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -102,7 +102,7 @@ function display_instagram($atts, $content = null) {
     $sb_instagram_content .= '<div id="sbi_images" style="padding: '.$sb_instagram_image_padding . $sb_instagram_image_padding_unit .';">';
 
     //Error messages
-    if( $sb_instagram_type == 'user' && ( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) ) $sb_instagram_content .= '<p>Please enter a User ID on the Instagram plugin Settings page</p>';
+    if( empty($sb_instagram_user_id) || !isset($sb_instagram_user_id) ) $sb_instagram_content .= '<p>Please enter a User ID on the Instagram plugin Settings page</p>';
 
     if( empty($options[ 'sb_instagram_at' ]) || !isset($options[ 'sb_instagram_at' ]) ) $sb_instagram_content .= '<p>Please enter an Access Token on the Instagram Feed plugin Settings page</p>';
 
@@ -134,7 +134,7 @@ function sb_instagram_styles_enqueue() {
 add_action( 'wp_enqueue_scripts', 'sb_instagram_scripts_enqueue' );
 function sb_instagram_scripts_enqueue() {
     //Register the script to make it available
-    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?3' , __FILE__ ), array('jquery'), '1.8', true );
+    wp_register_script( 'sb_instagram_scripts', plugins_url( '/js/sb-instagram.js?4' , __FILE__ ), array('jquery'), '1.8', true );
 
     //Options to pass to JS file
     $sb_instagram_settings = get_option('sb_instagram_settings');
@@ -177,7 +177,11 @@ function sb_instagram_custom_js() {
     if( !empty($sb_instagram_custom_js) ) echo "\r\n";
     if( !empty($sb_instagram_custom_js) ) echo "jQuery( document ).ready(function($) {";
     if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo "window.sbi_custom_js = function(){";
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
     if( !empty($sb_instagram_custom_js) ) echo stripslashes($sb_instagram_custom_js);
+    if( !empty($sb_instagram_custom_js) ) echo "\r\n";
+    if( !empty($sb_instagram_custom_js) ) echo "}";
     if( !empty($sb_instagram_custom_js) ) echo "\r\n";
     if( !empty($sb_instagram_custom_js) ) echo "});";
     if( !empty($sb_instagram_custom_js) ) echo "\r\n";

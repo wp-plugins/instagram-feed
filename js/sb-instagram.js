@@ -50,7 +50,19 @@
 			    	$loadBtn.hide();
 			    	$self.css('padding-bottom', 0);
 			    }
-			  }
+			  },
+			success: function(){
+
+				//Run 10ms after the feed is returned
+				var sbiFeedLoaded = setInterval(function () {
+
+					//Run custom JS
+					sbi_custom_js();
+
+					clearInterval(sbiFeedLoaded);
+				}, 10);
+
+			}
 		});
 
 		$loadBtn.find('a').on("click", function() {
