@@ -130,6 +130,7 @@ For more shortcode options, check out the [Pro version](https://smashballoon.com
 = 1.2.1 =
 * Fix: Fixed a minor issue with the Custom JavaScript being run before the photos are loaded
 * Fix: Removed stray PHP notices
+* Fix: Changed the double quotes to single quotes on the 'data-options' attribute
 
 = 1.2 =
 * New: Added Custom CSS and Custom JavaScript sections which allow you to add your own custom CSS and JavaScript to the plugin
