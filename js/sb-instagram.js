@@ -57,7 +57,7 @@
 				var sbiFeedLoaded = setInterval(function () {
 
 					//Run custom JS
-					sbi_custom_js();
+					if (typeof sbi_custom_js == 'function') sbi_custom_js();
 
 					clearInterval(sbiFeedLoaded);
 				}, 10);
