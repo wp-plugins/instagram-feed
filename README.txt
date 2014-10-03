@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -126,6 +126,9 @@ For more shortcode options, check out the [Pro version](https://smashballoon.com
 4. The Instagram Settings page. Super simple to set up and customize.
 
 == Changelog ==
+= 1.2.2 =
+* Tweak: Added an initialize function to the plugin
+* Fix: Fixed an occasional issue with the 'Sort Photos By' option being undefined
 
 = 1.2.1 =
 * Fix: Fixed a minor issue with the Custom JavaScript being run before the photos are loaded
