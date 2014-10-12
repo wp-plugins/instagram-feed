@@ -34,7 +34,7 @@ Display the Instagram photo feed of any non-private Instagram account.
 = Feedback or Support =
 We're dedicated to providing the most customizable, robust and well supported Instagram feed plugin in the world, so if you have an issue or have any feedback on how to improve the plugin then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum').
 
-For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo **captions** + more, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
+For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo **captions** + more, check out the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Installation ==
 
@@ -61,7 +61,7 @@ For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo 
 * **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
 * **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
 
-For more shortcode options, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
+For more shortcode options, check out the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Frequently Asked Questions ==
 
@@ -90,7 +90,7 @@ If you're still having an issue displaying your feed then please open a ticket i
 
 = Can I view the full-size photos directly on my website?  =
 
-This is a feature of the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, display captions, display photos by hashtag + more!
+This is a feature of the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, display captions, display photos by hashtag + more!
 
 = How do I embed my Instagram Feed directly into a WordPress page template? =
 
@@ -116,7 +116,7 @@ The below options are available on the Instagram Feed Settings page but can also
 * **buttontextcolor** - The text color of the button. Any hex color code - Example: `[instagram-feed buttontextcolor=#fff]`
 * **imageres** - The resolution/size of the photos. 'full', 'medium' or 'thumb' - Example: `[instagram-feed imageres=full]`
 
-For more shortcode options, check out the [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
+For more shortcode options, check out the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Screenshots ==
 
@@ -140,7 +140,7 @@ For more shortcode options, check out the [Pro version](https://smashballoon.com
 * New: Added an option to display your Instagram photos in random order
 * New: A new tabbed layout has been implemented on the plugin's settings pages
 * New: Added an option to preserve your settings when uninstalling the plugin
-* New: Added a [Pro version](https://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin which allows you to display photos by hashtag, display captions, view photos in a pop-up lightbox, show the number of likes & comments and more
+* New: Added a [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin which allows you to display photos by hashtag, display captions, view photos in a pop-up lightbox, show the number of likes & comments and more
 * Tweak: The 'Load More' button now automatically hides if there are no more photos to load
 * Tweak: Added a small gap to the top of the 'Load More' button
 * Tweak: Added a icon to the Instagram Feed menu item

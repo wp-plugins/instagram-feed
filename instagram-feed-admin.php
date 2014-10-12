@@ -167,7 +167,7 @@ function sb_instagram_settings_page() {
                         <td>
                             <input name="sb_instagram_at" id="sb_instagram_at" type="text" value="<?php esc_attr_e( $sb_instagram_at ); ?>" size="50" />
                             &nbsp;<a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
-                            <p class="sbi_tooltip"><?php _e("In order to display your photos you need an Access Token from Instagram. To get yours, simply click the button above and log into Instagram. You can also use the button on <a href='https://smashballoon.com/instagram-feed/token/' target='_blank'>this page</a>."); ?></p>
+                            <p class="sbi_tooltip"><?php _e("In order to display your photos you need an Access Token from Instagram. To get yours, simply click the button above and log into Instagram. You can also use the button on <a href='http://smashballoon.com/instagram-feed/token/' target='_blank'>this page</a>."); ?></p>
                         </td>
                     </tr>
 
@@ -189,7 +189,7 @@ function sb_instagram_settings_page() {
                                 <input disabled type="radio" name="sb_instagram_type" id="sb_instagram_type_hashtag" value="hashtag" <?php if($sb_instagram_type == "hashtag") echo "checked"; ?> />
                                 <label class="sbi_radio_label" for="sb_instagram_type_hashtag">Hashtag:</label>
                                 <input readonly type="text" size="25" />
-                                &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a><span class="sbi_note"><a href="https://smashballoon.com/instagram-feed/" target="_blank">- Upgrade to Pro to show posts by Hashtag</a></span>
+                                &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a><span class="sbi_note"><a href="http://smashballoon.com/instagram-feed/" target="_blank">- Upgrade to Pro to show posts by Hashtag</a></span>
                                 <p class="sbi_tooltip"><?php _e("Display posts from a specific hashtag instead of from a user"); ?></p>
                             </span>
                            
@@ -279,7 +279,7 @@ function sb_instagram_settings_page() {
                     <th scope="row"><label><?php _e("Enable Pop-up Lightbox"); ?></label></th>
                     <td>
                         <input disabled type="checkbox" />
-                        <span class="sbi_note"><a href="https://smashballoon.com/instagram-feed/" target="_blank"><?php _e('Upgrade to Pro to enable the Pop-up Lightbox.'); ?></a></span>
+                        <span class="sbi_note"><a href="http://smashballoon.com/instagram-feed/" target="_blank"><?php _e('Upgrade to Pro to enable the Pop-up Lightbox.'); ?></a></span>
                     </td>
                 </tr>
                 <tr valign="top">
@@ -363,16 +363,16 @@ function sb_instagram_settings_page() {
 
         <hr />
         <h3><?php _e("Caption"); ?></h3>
-        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Photo Captions</a></p>
+        <p style="padding-bottom: 18px;"><a href="http://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Photo Captions</a></p>
 
         <hr />
         <h3><?php _e("Likes &amp; Comments"); ?></h3>
-        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Likes &amp; Comments</a></p>
+        <p style="padding-bottom: 18px;"><a href="http://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Likes &amp; Comments</a></p>
 
 
         <hr />
         <h3><?php _e('Translate / Custom Text'); ?></h3>
-        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Custom Text</a></p>
+        <p style="padding-bottom: 18px;"><a href="http://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Custom Text</a></p>
   
 
         <hr />
@@ -585,7 +585,7 @@ function sb_instagram_settings_page() {
 
     <hr />
 
-    <a href="https://smashballoon.com/instagram-feed/demo" target="_blank" style="display: block; margin: 20px 0 0 0;">
+    <a href="http://smashballoon.com/instagram-feed/demo" target="_blank" style="display: block; margin: 20px 0 0 0;">
         <img src="<?php echo plugins_url( 'img/instagram-pro-promo.png' , __FILE__ ) ?>" alt="Instagram Feed Pro">
     </a>
 
