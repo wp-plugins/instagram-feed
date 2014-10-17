@@ -34,7 +34,7 @@ Display the Instagram photo feed of any non-private Instagram account.
 = Feedback or Support =
 We're dedicated to providing the most customizable, robust and well supported Instagram feed plugin in the world, so if you have an issue or have any feedback on how to improve the plugin then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum').
 
-For a pop-up photo **lightbox**, to display posts by **hashtag**, to show photo **captions** + more, check out the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
+For a pop-up photo **lightbox**, to display posts by **hashtag**, show photo **captions**, **video** support + more, check out the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro').
 
 == Installation ==
 
@@ -90,7 +90,7 @@ If you're still having an issue displaying your feed then please open a ticket i
 
 = Can I view the full-size photos directly on my website?  =
 
-This is a feature of the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, display captions, display photos by hashtag + more!
+This is a feature of the [Pro version](http://smashballoon.com/instagram-feed/demo/ 'Instagram Feed Pro') of the plugin, which allows you to view the photos in a pop-up lightbox, support videos, display captions, display photos by hashtag + more!
 
 = How do I embed my Instagram Feed directly into a WordPress page template? =
 
