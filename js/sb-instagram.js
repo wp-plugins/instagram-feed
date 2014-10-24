@@ -66,7 +66,7 @@
 				}
 			});
 
-			$loadBtn.find('a').on("click", function() {
+			$loadBtn.find('a').click(function() {
 				userFeed.next();
 			});
 
