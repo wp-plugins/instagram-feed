@@ -15,16 +15,38 @@
 
 			var $self = $(this),
 				$target = $self.find('#sbi_images'),
-				$loadBtn = $self.find("#sbi_load"),
+				$loadBtn = $self.find("#sbi_load .sbi_load_btn"),
 				imgRes = 'standard_resolution',
+                cols = parseInt( this.getAttribute('data-cols') ),
+                num = this.getAttribute('data-num'),
 				//Convert styles JSON string to an object
 				feedOptions = JSON.parse( this.getAttribute('data-options') ),
 				getType = 'user',
-				sortby = 'none';
+				sortby = 'none',
+                user_id = this.getAttribute('data-id'),
+                num = this.getAttribute('data-num'),
+				posts_arr = [],
+                $header = '';
 
 			if( feedOptions.sortby !== '' ) sortby = feedOptions.sortby;
 
 			switch( this.getAttribute('data-res') ) {
+                case 'auto':
+                    var feedWidth = $('#sb_instagram').innerWidth(),
+                        colWidth = $('#sb_instagram').innerWidth() / cols;
+
+                    if( feedWidth < 680 ) colWidth = 300; //Use 306x306 images
+                    if( feedWidth < 480 && feedWidth > 300 ) colWidth = 480; //Use full size images
+
+                    if( colWidth < 150 ){
+                        imgRes = 'thumbnail';
+                    } else if( colWidth < 306 ){
+                        imgRes = 'low_resolution';
+                    } else {
+                        imgRes = 'standard_resolution';
+                    }
+
+                    break;
 			    case 'thumb':
 			        imgRes = 'thumbnail';
 			        break;
@@ -35,42 +57,124 @@
 			        imgRes = 'standard_resolution';
 			}
 
-			var userFeed = new instagramfeed({
-				target: $target,
-			    get: getType,
-			    sortBy: sortby,
-			    resolution: imgRes,
-			    limit: parseInt( this.getAttribute('data-num') ),
-			    template: '<div class="sbi_item"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{image}}" /></a></div></div>',
-			    userId: parseInt( this.getAttribute('data-id') ),
-			    accessToken: sb_instagram_js_options.sb_instagram_at,
-			    after: function() {
-				    if (this.hasNext()) {
-				     	$loadBtn.show();
-				    } else {
-				    	$loadBtn.hide();
-				    	$self.css('padding-bottom', 0);
-				    }
-				  },
-				success: function(){
+			//Split comma separated hashtags into array
+            var ids_arr = user_id.replace(/ /g,'').split(",");
+           	var looparray = ids_arr;
 
-					//Run 10ms after the feed is returned
-					var sbiFeedLoaded = setInterval(function () {
+            //Get page info for first User ID
+            var headerStyles = '',
+                sbi_page_url = 'https://api.instagram.com/v1/users/' + ids_arr[0] + '?access_token=' + sb_instagram_js_options.sb_instagram_at;
 
-						//Run custom JS
-						if (typeof sbi_custom_js == 'function') sbi_custom_js();
+            if(feedOptions.headercolor.length) headerStyles = 'style="color: #'+feedOptions.headercolor+'"';
 
-						clearInterval(sbiFeedLoaded);
-					}, 10);
+            $.ajax({
+                method: "GET",
+                url: sbi_page_url,
+                dataType: "jsonp",
+                success: function(data) {
+                    $header = '<a href="http://instagram.com/'+data.data.username+'" target="_blank" title="@'+data.data.username+'" class="sbi_header_link" '+headerStyles+'>';
+                    $header += '<div class="sbi_header_text">';
+                    $header += '<h3'
+                    if( data.data.bio.length == 0 ) $header += ' class="sbi_no_bio"';
+                    $header += '>@'+data.data.username+'</h3>';
+                    if( data.data.bio.length ) $header += '<p class="sbi_bio">'+data.data.bio+'</p>';
+                    $header += '</div>';
+                    $header += '<div class="sbi_header_img">';
+                    $header += '<div class="sbi_header_img_hover"><i class="fa fa-instagram"></i></div>';
+                    $header += '<img src="'+data.data.profile_picture+'" alt="'+data.data.full_name+'" width="50" height="50">';
+                    $header += '</div>';
+                    $header += '</a>';
+                    //Add the header
+                    $self.find('.sb_instagram_header').prepend( $header );
+                    //Change the URL of the follow button
+                    if( $self.find('.sbi_follow_btn').length ) $self.find('.sbi_follow_btn a').attr('href', 'http://instagram.com/' + data.data.username )
+                }
+            });
 
-				}
-			});
+			//Loop through User IDs
+            looparray.forEach(function(entry) {
 
-			$loadBtn.find('a').click(function() {
-				userFeed.next();
-			});
+				var userFeed = new instagramfeed({
+					target: $target,
+				    get: getType,
+				    sortBy: sortby,
+				    resolution: imgRes,
+				    limit: parseInt( num ),
+				    template: '<div class="sbi_item sbi_type_{{model.type}} sbi_new" id="sbi_{{id}}" data-date="{{model.created_time_raw}}"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{image}}" /></a></div></div>',
+				    filter: function(image) {
+				    	//Create time for sorting
+    					var date = new Date(image.created_time*1000),
+    						time = date.getTime();
+                        image.created_time_raw = time;
 
-			userFeed.run();
+    					return true;
+    				},
+				    userId: parseInt( entry ),
+				    accessToken: sb_instagram_js_options.sb_instagram_at,
+				    after: function() {
+
+                        $self.find('.sbi_loader').remove();
+
+    			    	/* Load more button */
+					    if (this.hasNext()) {
+					     	$loadBtn.show();
+					    } else {
+					    	$loadBtn.hide();
+					    	$self.css('padding-bottom', 0);
+					    }
+
+					    // Call Custom JS if it exists
+    					if (typeof sbi_custom_js == 'function') sbi_custom_js();
+
+    					//Fade photos on hover
+    					$('#sb_instagram .sbi_photo').each(function(){
+    						$(this).hover(function(){
+								$(this).fadeTo(200, 0.85);
+							}, function(){
+								$(this).stop().fadeTo(500, 1);
+							});
+    					});
+
+
+    					//Sort posts by date
+                        //only sort the new posts that are loaded in, not the whole feed, otherwise some photos will switch positions due to dates
+                        $self.find('#sbi_images .sbi_item.sbi_new').sort(function (a, b) {
+                            var aComp = $(a).attr("data-date"),
+                                bComp = $(b).attr("data-date");
+
+                            if(sortby == 'none'){
+                                //Order by date
+                                return bComp - aComp;
+                            } else {
+                                //Randomize
+                                return (Math.round(Math.random())-0.5);
+                            }
+
+                        }).appendTo( $self.find("#sbi_images") );
+
+                        //Remove the new class after 500ms, once the sorting is done
+                        setTimeout(function(){
+                            $('#sbi_images .sbi_item.sbi_new').removeClass('sbi_new');
+                        }, 500);
+
+                        //Header profile pic hover
+                        $self.find('.sb_instagram_header a').hover(function(){
+                            $self.find('.sb_instagram_header .sbi_header_img_hover').fadeIn(200);
+                        }, function(){
+                            $self.find('.sb_instagram_header .sbi_header_img_hover').stop().fadeOut(600);
+                        });
+
+
+					} // End 'after' function
+				});
+
+				$loadBtn.click(function() {
+					userFeed.next();
+				});
+
+				userFeed.run();
+
+			}); //End User ID array loop
 
 		
 		});
