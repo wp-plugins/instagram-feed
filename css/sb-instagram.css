@@ -189,7 +189,7 @@
 #sb_instagram .sbi_header_text{
   float: left;
   width: 100%;
-  padding-top: 2px;
+  padding-top: 5px;
 }
 #sb_instagram .sb_instagram_header a{
   text-decoration: none;
@@ -203,7 +203,7 @@
 }
 #sb_instagram .sb_instagram_header h3{
   font-size: 16px;
-  margin-bottom: -5px !important;
+  line-height: 1.3;
 }
 #sb_instagram .sb_instagram_header p{
   font-size: 13px;

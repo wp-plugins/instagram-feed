@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.0.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,10 @@ For more shortcode options, check out the [Pro version](http://smashballoon.com/
 7. The Instagram Feed plugin Settings pages
 
 == Changelog ==
+= 1.3.1 =
+* Fix: Fixed an issue with the Instagram icon not appearing in the 'Follow on Instagram' button or in the header
+* Fix: Addressed a few CSS issues which were causing some minor formatting issues on certain themes
+
 = 1.3 =
 * New: You can now display photos from multiple Instagram User IDs. Simply separate your IDs by commas.
 * New: Added an optional header to the feed which contains your Instagram profile picture, username and bio. You can activate this on the Customize page.

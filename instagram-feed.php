@@ -3,7 +3,7 @@
 Plugin Name: Instagram Feed
 Plugin URI: http://smashballoon.com/instagram-feed
 Description: Display beautifully clean, customizable, and responsive Instagram feeds
-Version: 1.3
+Version: 1.3.1
 Author: Smash Balloon
 Author URI: http://smashballoon.com/
 License: GPLv2 or later
@@ -168,8 +168,9 @@ add_filter('widget_text', 'do_shortcode');
 //Enqueue stylesheet
 add_action( 'wp_enqueue_scripts', 'sb_instagram_styles_enqueue' );
 function sb_instagram_styles_enqueue() {
-    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css?5', __FILE__) );
+    wp_register_style( 'sb_instagram_styles', plugins_url('css/sb-instagram.css?6', __FILE__) );
     wp_enqueue_style( 'sb_instagram_styles' );
+    wp_enqueue_style( 'sb_instagram_icons', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css?1', array(), '4.2.0' );
 }
 
 //Enqueue scripts
