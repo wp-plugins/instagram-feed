@@ -218,7 +218,7 @@ function sb_instagram_settings_page() {
                                 <label class="sbi_radio_label" for="sb_instagram_type_user">User ID(s):</label>
                                 <input name="sb_instagram_user_id" id="sb_instagram_user_id" type="text" value="<?php esc_attr_e( $sb_instagram_user_id ); ?>" size="25" />
                                 &nbsp;<a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
-                                <p class="sbi_tooltip"><?php _e("These are the IDs of the Instagram accounts you want to display photos from. To get your ID simply click on the button above and log into Instagram.<br /><br />You can also display photos from other peoples Instagram accounts. To find their User ID you can use <a href='http://jelled.com/instagram/lookup-user-id' target='_blank'>this tool</a>. You can separate multiple IDs using commas."); ?></p><br />
+                                <p class="sbi_tooltip"><?php _e("These are the IDs of the Instagram accounts you want to display photos from. To get your ID simply click on the button above and log into Instagram.<br /><br />You can also display photos from other peoples Instagram accounts. To find their User ID you can use <a href='http://www.otzberg.net/iguserid/' target='_blank'>this tool</a>. You can separate multiple IDs using commas."); ?></p><br />
                             </span>
                             
                             <span class="sbi_pro">

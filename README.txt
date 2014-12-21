@@ -102,7 +102,7 @@ Yep. You can just separate the IDs by commas, either in the User ID(s) field on 
 
 We've made it super easy. Simply click on the big blue button on the Instagram Feed Settings page and log into your Instagram account. The plugin will then retrieve and display both your Access Token and User ID from Instagram.
 
-You can also display photos from other peoples Instagram accounts. To find their Instagram User ID you can use [this tool](http://jelled.com/instagram/lookup-user-id).
+You can also display photos from other peoples Instagram accounts. To find their Instagram User ID you can use [this tool](http://www.otzberg.net/iguserid/).
 
 = Are there any security issues with using an Access Token on my site? =
 
@@ -114,7 +114,7 @@ There are a few common reasons for this:
 
 * Your Instagram account may be set to private. Instagram doesn't allow photos from private Instagram accounts to be displayed publicly.
 * Your Access Token may not be valid. Try clicking on the blue Instagram login button on the plugin's Settings page again and copy and paste the Instagram token it gives you into the plugin's Access Token field.
-* Your User ID may not be valid. Be sure you're not using your Instagram username instead of your User ID. You can find your Instagram User ID by using [this tool](http://jelled.com/instagram/lookup-user-id).
+* Your User ID may not be valid. Be sure you're not using your Instagram username instead of your User ID. You can find your Instagram User ID by using [this tool](http://www.otzberg.net/iguserid/).
 * Your website may contain a JavaScript error which is preventing JavaScript from running. The plugin uses JavaScript to load the Instagram photos into your page and so needs JavaScript to be running in order to work. You would need to remove any existing JavaScript errors on your website for the plugin to be able to load in your feed.
 
 If you're still having an issue displaying your feed then please open a ticket in the [Support forum](http://wordpress.org/support/plugin/instagram-feed 'Instagram Feed Support Forum') with a link to the page where you're trying to display the Instagram feed and, if possible, a link to your Instagram account.
