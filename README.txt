@@ -182,7 +182,7 @@ For more shortcode options, check out the [Pro version](http://smashballoon.com/
 = 1.3.2 =
 * New: Added an option to disable the mobile layout
 * New: Added an setting which allows you to use the plugin with an Ajax powered theme
-* NeW: Added a 'class' shortcode option which allows you to add a CSS to class to each individual feed: `[instagram-feed class=feedOne]`
+* New: Added a 'class' shortcode option which allows you to add a CSS to class to each individual feed: `[instagram-feed class=feedOne]`
 * New: Added a Support tab which contains System Info to help with troubleshooting
 * New: Added friendly error messages which display only to WordPress admins
 * New: Added validation to the User ID field to prevent usernames being entered instead of IDs
