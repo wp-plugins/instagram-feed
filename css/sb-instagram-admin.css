@@ -162,3 +162,44 @@
 	background: #eacccc;
 	margin: 3px 6px 0 0;
 }
+
+
+
+
+/* Error notice */
+#sbi_admin .sbi_notice{
+	margin-top: 5px;
+	background: #f9ecda;
+	padding: 5px 10px;
+	border: 1px solid #e89a2e;
+	color: #cf6100;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+#sbi_admin .sbi_notice a{
+	color: #d85600;
+}
+#sbi_admin .sbi_notice a:hover,
+#sbi_admin .sbi_notice a:focus{
+	color: #a34100;
+}
+#sbi_admin .sbi_notice p{
+	margin: 0;
+	padding: 5px 0;
+	font-size: 13px;
+}
+#sbi_admin .sbi_user_id_error{
+	display: none;
+
+	margin: 10px 0;
+	background: #F7E6E6;
+	padding: 5px 10px;
+	border: 1px solid #BA7B7B;
+	color: #592626;
+
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}

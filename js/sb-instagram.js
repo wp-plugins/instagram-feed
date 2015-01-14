@@ -92,7 +92,9 @@
             });
 
 			//Loop through User IDs
-            looparray.forEach(function(entry) {
+            // looparray.forEach(function(entry) {
+            for (var i = 0, len = looparray.length; i < len; i++) {
+                var entry = looparray[i];
 
 				var userFeed = new instagramfeed({
 					target: $target,
@@ -165,7 +167,22 @@
                         });
 
 
-					} // End 'after' function
+					}, // End 'after' function
+                    error: function(data) {
+                        var sbiErrorMsg = '',
+                            sbiErrorDir = '';
+
+                        if( data.indexOf('access_token') > -1 ){
+                            sbiErrorMsg += '<p><b>Error: Access Token is not valid</b><br /><span>This error message is only visible to WordPress admins</span>';
+                            sbiErrorDir = "<p>There's an issue with the Instagram Access Token that you are using. Please obtain a new Access Token on the plugin's Settings page.";
+                        } else if( data.indexOf('user does not exist') > -1 ){
+                            sbiErrorMsg += '<p><b>Error: The User ID does not exist</b><br /><span>This error is only visible to WordPress admins</span>';
+                            sbiErrorDir = "<p>Please double check the Instagram User ID that you are using. To find your User ID simply enter your Instagram user name into this <a href='http://www.otzberg.net/iguserid/' target='_blank'>tool</a>.</p>";
+                        }
+
+                        //Add the error message to the page unless the user is displaying multiple ids or hashtags
+                        if(looparray.length < 2) $('#sb_instagram').empty().append( '<p style="text-align: center;">Unable to show Instagram photos</p><div id="sbi_mod_error">' + sbiErrorMsg + sbiErrorDir + '</div>');
+                    }
 				});
 
 				$loadBtn.click(function() {
@@ -174,7 +191,7 @@
 
 				userFeed.run();
 
-			}); //End User ID array loop
+			} //End User ID array loop
 
 		
 		});

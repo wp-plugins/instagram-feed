@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,7 @@ For simple step-by-step directions on how to set up the Instagram Feed plugin pl
 * **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
 * **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
 * **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
+* **class** - Add a CSS class to the feed container - Example: `[instagram-feed class=feedOne]`
 *
 * **Photo Options**
 * **sortby** - Sort the posts by Newest to Oldest (none) or Random (random) - Example: `[instagram-feed sortby=random]`
@@ -69,6 +70,7 @@ For simple step-by-step directions on how to set up the Instagram Feed plugin pl
 * **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
 * **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
 * **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepaddingunit=px]`
+* **disablemobile** - Disable the mobile layout. 'true' or 'false' - Example: `[instagram-feed disablemobile=true]`
 *
 * **Header Options**
 * **showheader** - Whether to show the feed Header. 'true' or 'false' - Example: `[instagram-feed showheader=false]`
@@ -138,6 +140,7 @@ The below options are available on the Instagram Feed Settings page but can also
 * **height** - The height of your feed. Any number - Example: `[instagram-feed height=250]`
 * **heightunit** - The unit of the height. 'px' or '%' - Example: `[instagram-feed heightunit=px]`
 * **background** - The background color of the feed. Any hex color code - Example: `[instagram-feed background=#ffff00]`
+* **class** - Add a CSS class to the feed container - Example: `[instagram-feed class=feedOne]`
 *
 * **Photo Options**
 * **sortby** - Sort the posts by Newest to Oldest (none) or Random (random) - Example: `[instagram-feed sortby=random]`
@@ -145,6 +148,7 @@ The below options are available on the Instagram Feed Settings page but can also
 * **cols** - The number of columns in your feed. 1 - 10 - Example: `[instagram-feed cols=5]`
 * **imagepadding** - The spacing around your photos - Example: `[instagram-feed imagepadding=10]`
 * **imagepaddingunit** - The unit of the padding. 'px' or '%' - Example: `[instagram-feed imagepaddingunit=px]`
+* **disablemobile** - Disable the mobile layout. 'true' or 'false' - Example: `[instagram-feed disablemobile=true]`
 *
 * **Header Options**
 * **showheader** - Whether to show the feed Header. 'true' or 'false' - Example: `[instagram-feed showheader=false]`
@@ -175,6 +179,16 @@ For more shortcode options, check out the [Pro version](http://smashballoon.com/
 7. The Instagram Feed plugin Settings pages
 
 == Changelog ==
+= 1.3.2 =
+* New: Added an option to disable the mobile layout
+* New: Added an setting which allows you to use the plugin with an Ajax powered theme
+* NeW: Added a 'class' shortcode option which allows you to add a CSS to class to each individual feed: `[instagram-feed class=feedOne]`
+* New: Added a Support tab which contains System Info to help with troubleshooting
+* New: Added friendly error messages which display only to WordPress admins
+* New: Added validation to the User ID field to prevent usernames being entered instead of IDs
+* Tweak: Made the Access Token field slightly wider to prevent tokens being copy and pasted incorrectly
+* Fix: Fixed a JavaScript bug which caused the feed not to load photos correctly in IE8
+
 = 1.3.1 =
 * Fix: Fixed an issue with the Instagram icon not appearing in the 'Follow on Instagram' button or in the header
 * Fix: Addressed a few CSS issues which were causing some minor formatting issues on certain themes

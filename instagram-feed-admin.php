@@ -31,12 +31,14 @@ function sb_instagram_settings_page() {
         'sb_instagram_at'                   => '',
         'sb_instagram_user_id'              => '',
         'sb_instagram_preserve_settings'    => '',
+        'sb_instagram_ajax_theme'           => false,
         'sb_instagram_width'                => '100',
         'sb_instagram_width_unit'           => '%',
         'sb_instagram_height'               => '',
         'sb_instagram_num'                  => '20',
         'sb_instagram_height_unit'          => '',
         'sb_instagram_cols'                 => '4',
+        'sb_instagram_disable_mobile'       => false,
         'sb_instagram_image_padding'        => '5',
         'sb_instagram_image_padding_unit'   => 'px',
         'sb_instagram_sort'                 => 'none',
@@ -47,10 +49,10 @@ function sb_instagram_settings_page() {
         'sb_instagram_btn_text'             => 'Load More...',
         'sb_instagram_image_res'            => 'auto',
         //Header
-        'sb_instagram_show_header'          => false,
+        'sb_instagram_show_header'          => true,
         'sb_instagram_header_color'         => '',
         //Follow button
-        'sb_instagram_show_follow_btn'      => false,
+        'sb_instagram_show_follow_btn'      => true,
         'sb_instagram_folow_btn_background' => '',
         'sb_instagram_follow_btn_text_color' => '',
         'sb_instagram_follow_btn_text'      => 'Follow on Instagram',
@@ -66,12 +68,14 @@ function sb_instagram_settings_page() {
     $sb_instagram_at = $options[ 'sb_instagram_at' ];
     $sb_instagram_user_id = $options[ 'sb_instagram_user_id' ];
     $sb_instagram_preserve_settings = $options[ 'sb_instagram_preserve_settings' ];
+    $sb_instagram_ajax_theme = $options[ 'sb_instagram_ajax_theme' ];
     $sb_instagram_width = $options[ 'sb_instagram_width' ];
     $sb_instagram_width_unit = $options[ 'sb_instagram_width_unit' ];
     $sb_instagram_height = $options[ 'sb_instagram_height' ];
     $sb_instagram_height_unit = $options[ 'sb_instagram_height_unit' ];
     $sb_instagram_num = $options[ 'sb_instagram_num' ];
     $sb_instagram_cols = $options[ 'sb_instagram_cols' ];
+    $sb_instagram_disable_mobile = $options[ 'sb_instagram_disable_mobile' ];
     $sb_instagram_image_padding = $options[ 'sb_instagram_image_padding' ];
     $sb_instagram_image_padding_unit = $options[ 'sb_instagram_image_padding_unit' ];
     $sb_instagram_sort = $options[ 'sb_instagram_sort' ];
@@ -100,10 +104,12 @@ function sb_instagram_settings_page() {
             $sb_instagram_at = $_POST[ 'sb_instagram_at' ];
             $sb_instagram_user_id = $_POST[ 'sb_instagram_user_id' ];
             isset($_POST[ 'sb_instagram_preserve_settings' ]) ? $sb_instagram_preserve_settings = $_POST[ 'sb_instagram_preserve_settings' ] : $sb_instagram_preserve_settings = '';
+            isset($_POST[ 'sb_instagram_ajax_theme' ]) ? $sb_instagram_ajax_theme = $_POST[ 'sb_instagram_ajax_theme' ] : $sb_instagram_ajax_theme = '';
 
             $options[ 'sb_instagram_at' ] = $sb_instagram_at;
             $options[ 'sb_instagram_user_id' ] = $sb_instagram_user_id;
             $options[ 'sb_instagram_preserve_settings' ] = $sb_instagram_preserve_settings;
+            $options[ 'sb_instagram_ajax_theme' ] = $sb_instagram_ajax_theme;
         } //End config tab post
 
         if( isset($_POST[ $sb_instagram_customize_hidden_field ]) && $_POST[ $sb_instagram_customize_hidden_field ] == 'Y' ) {
@@ -113,6 +119,8 @@ function sb_instagram_settings_page() {
             $sb_instagram_height_unit = $_POST[ 'sb_instagram_height_unit' ];
             $sb_instagram_num = $_POST[ 'sb_instagram_num' ];
             $sb_instagram_cols = $_POST[ 'sb_instagram_cols' ];
+            isset($_POST[ 'sb_instagram_disable_mobile' ]) ? $sb_instagram_disable_mobile = $_POST[ 'sb_instagram_disable_mobile' ] : $sb_instagram_disable_mobile = '';
+
             $sb_instagram_image_padding = $_POST[ 'sb_instagram_image_padding' ];
             $sb_instagram_image_padding_unit = $_POST[ 'sb_instagram_image_padding_unit' ];
             $sb_instagram_sort = $_POST[ 'sb_instagram_sort' ];
@@ -140,6 +148,7 @@ function sb_instagram_settings_page() {
             $options[ 'sb_instagram_height_unit' ] = $sb_instagram_height_unit;
             $options[ 'sb_instagram_num' ] = $sb_instagram_num;
             $options[ 'sb_instagram_cols' ] = $sb_instagram_cols;
+            $options[ 'sb_instagram_disable_mobile' ] = $sb_instagram_disable_mobile;
             $options[ 'sb_instagram_image_padding' ] = $sb_instagram_image_padding;
             $options[ 'sb_instagram_image_padding_unit' ] = $sb_instagram_image_padding_unit;
             $options[ 'sb_instagram_sort' ] = $sb_instagram_sort;
@@ -185,6 +194,7 @@ function sb_instagram_settings_page() {
                 <a href="?page=sb-instagram-feed&amp;tab=configure" class="nav-tab <?php echo $sbi_active_tab == 'configure' ? 'nav-tab-active' : ''; ?>"><?php _e('1. Configure'); ?></a>
                 <a href="?page=sb-instagram-feed&amp;tab=customize" class="nav-tab <?php echo $sbi_active_tab == 'customize' ? 'nav-tab-active' : ''; ?>"><?php _e('2. Customize'); ?></a>
                 <a href="?page=sb-instagram-feed&amp;tab=display" class="nav-tab <?php echo $sbi_active_tab == 'display' ? 'nav-tab-active' : ''; ?>"><?php _e('3. Display Your Feed'); ?></a>
+                <a href="?page=sb-instagram-feed&amp;tab=support" class="nav-tab <?php echo $sbi_active_tab == 'support' ? 'nav-tab-active' : ''; ?>"><?php _e('Support'); ?></a>
             </h2>
 
             <?php if( $sbi_active_tab == 'configure' ) { //Start Configure tab ?>
@@ -220,6 +230,10 @@ function sb_instagram_settings_page() {
                                 &nbsp;<a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
                                 <p class="sbi_tooltip"><?php _e("These are the IDs of the Instagram accounts you want to display photos from. To get your ID simply click on the button above and log into Instagram.<br /><br />You can also display photos from other peoples Instagram accounts. To find their User ID you can use <a href='http://www.otzberg.net/iguserid/' target='_blank'>this tool</a>. You can separate multiple IDs using commas."); ?></p><br />
                             </span>
+
+                            <div class="sbi_notice sbi_user_id_error">
+                                <?php _e("<p>Please be sure to enter your numeric <b>User ID</b> and not your Username. You can find your User ID by clicking the blue Instagram Login button above, or by entering your username into <a href='http://www.otzberg.net/iguserid/' target='_blank'>this tool</a>.</p>"); ?>
+                            </div>
                             
                             <span class="sbi_pro">
                                 <input disabled type="radio" name="sb_instagram_type" id="sb_instagram_type_hashtag" value="hashtag" <?php if($sb_instagram_type == "hashtag") echo "checked"; ?> />
@@ -241,6 +255,16 @@ function sb_instagram_settings_page() {
                             <label for="sb_instagram_preserve_settings"><?php _e('Yes'); ?></label>
                             <a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e('What does this mean?'); ?></a>
                             <p class="sbi_tooltip"><?php _e('When removing the plugin your settings are automatically erased. Checking this box will prevent any settings from being deleted. This means that you can uninstall and reinstall the plugin without losing your settings.'); ?></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="bump-left"><label for="sb_instagram_ajax_theme" class="bump-left"><?php _e("Are you using an Ajax powered theme?"); ?></label></th>
+                        <td>
+                            <input name="sb_instagram_ajax_theme" type="checkbox" id="sb_instagram_ajax_theme" <?php if($sb_instagram_ajax_theme == true) echo "checked"; ?> />
+                            <label for="sb_instagram_ajax_theme"><?php _e('Yes'); ?></label>
+                            <a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e('What does this mean?'); ?></a>
+                            <p class="sbi_tooltip"><?php _e("When navigating your site, if your theme uses Ajax to load content into your pages (meaning your page doesn't refresh) then check this setting. If you're not sure then please check with the theme author."); ?></p>
                         </td>
                     </tr>
                 </tbody>
@@ -372,6 +396,15 @@ function sb_instagram_settings_page() {
                             <option value="px" <?php if($sb_instagram_image_padding_unit == "px") echo 'selected="selected"' ?> ><?php _e('px'); ?></option>
                             <option value="%" <?php if($sb_instagram_image_padding_unit == "%") echo 'selected="selected"' ?> ><?php _e('%'); ?></option>
                         </select>
+                    </td>
+                </tr>
+
+                <tr valign="top">
+                    <th scope="row"><label><?php _e("Disable mobile layout"); ?></label></th>
+                    <td>
+                        <input type="checkbox" name="sb_instagram_disable_mobile" id="sb_instagram_disable_mobile" <?php if($sb_instagram_disable_mobile == true) echo 'checked="checked"' ?> />
+                        &nbsp;<a class="sbi_tooltip_link" href="JavaScript:void(0);"><?php _e("What does this mean?"); ?></a>
+                            <p class="sbi_tooltip"><?php _e("By default on mobile devices the layout automatically changes to use fewer columns. Checking this setting disables the mobile layout."); ?></p>
                     </td>
                 </tr>
 
@@ -597,6 +630,11 @@ function sb_instagram_settings_page() {
                     <td><?php _e("The background color of the feed. Any hex color code."); ?></td>
                     <td><code>[instagram-feed background=#ffff00]</code></td>
                 </tr>
+                <tr>
+                    <td>class</td>
+                    <td><?php _e("Add a CSS class to the feed container"); ?></td>
+                    <td><code>[instagram-feed class=feedOne]</code></td>
+                </tr>
 
                 <tr class="sbi_table_header"><td colspan=3><?php _e("Photos Options"); ?></td></tr>
                 <tr>
@@ -629,6 +667,17 @@ function sb_instagram_settings_page() {
                     <td><?php _e("The unit of the padding. 'px' or '%'"); ?></td>
                     <td><code>[instagram-feed imagepaddingunit=px]</code></td>
                 </tr>
+                <tr class="sbi_pro">
+                    <td>disablelightbox</td>
+                    <td><?php _e("Whether to disable the photo Lightbox. It is enabled by default."); ?></td>
+                    <td><code>[instagram-feed disablelightbox=true]</code></td>
+                </tr>
+                <tr>
+                    <td>disablemobile</td>
+                    <td><?php _e("Disable the mobile layout. 'true' or 'false'."); ?></td>
+                    <td><code>[instagram-feed disablemobile=true]</code></td>
+                </tr>
+
                 <tr class="sbi_pro">
                     <td>hovercolor</td>
                     <td><?php _e("The background color when hovering over a photo. Any hex color code."); ?></td>
@@ -741,6 +790,59 @@ function sb_instagram_settings_page() {
         <p><?php _e('Need help setting up the plugin? Check out our <a href="http://smashballoon.com/instagram-feed/free/" target="_blank">setup directions</a>'); ?></p>
 
     <?php } //End Display tab ?>
+
+
+    <?php if( $sbi_active_tab == 'support' ) { //Start Support tab ?>
+
+        <h3><?php _e('Setting up and Customizing the plugin'); ?></h3>
+        <p><?php _e('<a href="https://smashballoon.com/instagram-feed/free/" target="_blank">Click here for step-by-step setup directions</a>'); ?></p>
+        <p style="max-width: 960px;">See below for a short video demonstrating how to set up, customize and use the plugin. <b>Please note</b> that the video shows the set up and use of the <b><a href="https://smashballoon.com/instagram-feed/" target="_blank">PRO version</a></b> of the plugin, but the process is the same for this free version. The only difference is some of the features available.</p>
+        <iframe class="youtube-video" src="//www.youtube.com/embed/3tc-UvcTcgk?theme=light&amp;showinfo=0&amp;controls=2" width="960" height="540" frameborder="0" allowfullscreen="allowfullscreen" style="border: 1px solid #ddd;"></iframe>
+
+        <br />
+        <br />
+        <p><?php _e('Still need help? <a href="http://smashballoon.com/instagram-feed/support/" target="_blank">Request support</a>. Please include your <b>System Info</b> below with all support requests.'); ?></p>
+
+        <h3><?php _e('System Info &nbsp; <i style="color: #666; font-size: 11px; font-weight: normal;">Click the text below to select all</i>'); ?></h3>
+
+
+        <?php $sbi_options = get_option('sb_instagram_settings'); ?>
+        <textarea readonly="readonly" onclick="this.focus();this.select()" title="To copy, click the field then press Ctrl + C (PC) or Cmd + C (Mac)." style="width: 100%; max-width: 960px; height: 500px; white-space: pre; font-family: Menlo,Monaco,monospace;">
+## SITE/SERVER INFO: ##
+Site URL:                 <?php echo site_url() . "\n"; ?>
+Home URL:                 <?php echo home_url() . "\n"; ?>
+WordPress Version:        <?php echo get_bloginfo( 'version' ) . "\n"; ?>
+PHP Version:              <?php echo PHP_VERSION . "\n"; ?>
+Web Server Info:          <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
+
+## ACTIVE PLUGINS: ##
+<?php
+$plugins = get_plugins();
+$active_plugins = get_option( 'active_plugins', array() );
+
+foreach ( $plugins as $plugin_path => $plugin ) {
+    // If the plugin isn't active, don't show it.
+    if ( ! in_array( $plugin_path, $active_plugins ) )
+        continue;
+
+    echo $plugin['Name'] . ': ' . $plugin['Version'] ."\n";
+}
+?>
+
+## PLUGIN SETTINGS: ##
+sb_instagram_plugin_type => Instagram Feed Free
+<?php 
+while (list($key, $val) = each($sbi_options)) {
+    echo "$key => $val\n";
+}
+?>
+        </textarea>
+
+        
+<?php 
+} //End Support tab 
+?>
+
 
     <hr />
 
