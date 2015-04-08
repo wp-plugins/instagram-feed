@@ -58,7 +58,8 @@ function sb_instagram_settings_page() {
         'sb_instagram_follow_btn_text'      => 'Follow on Instagram',
         //Misc
         'sb_instagram_custom_css'           => '',
-        'sb_instagram_custom_js'            => ''
+        'sb_instagram_custom_js'            => '',
+        'sb_instagram_disable_error_reporting'      => false,
     );
     //Save defaults in an array
     $options = wp_parse_args(get_option('sb_instagram_settings'), $sb_instagram_settings_defaults);
@@ -96,6 +97,7 @@ function sb_instagram_settings_page() {
     //Misc
     $sb_instagram_custom_css = $options[ 'sb_instagram_custom_css' ];
     $sb_instagram_custom_js = $options[ 'sb_instagram_custom_js' ];
+    $sb_instagram_disable_error_reporting = $options[ 'sb_instagram_disable_error_reporting' ];
 
     // See if the user has posted us some information. If they did, this hidden field will be set to 'Y'.
     if( isset($_POST[ $sb_instagram_settings_hidden_field ]) && $_POST[ $sb_instagram_settings_hidden_field ] == 'Y' ) {
@@ -141,6 +143,8 @@ function sb_instagram_settings_page() {
             //Misc
             $sb_instagram_custom_css = $_POST[ 'sb_instagram_custom_css' ];
             $sb_instagram_custom_js = $_POST[ 'sb_instagram_custom_js' ];
+            (isset($_POST[ 'sb_instagram_disable_error_reporting' ])) ? $sb_instagram_disable_error_reporting = $_POST[ 'sb_instagram_disable_error_reporting' ] : $sb_instagram_disable_error_reporting = '';
+
 
             $options[ 'sb_instagram_width' ] = $sb_instagram_width;
             $options[ 'sb_instagram_width_unit' ] = $sb_instagram_width_unit;
@@ -169,6 +173,7 @@ function sb_instagram_settings_page() {
             //Misc
             $options[ 'sb_instagram_custom_css' ] = $sb_instagram_custom_css;
             $options[ 'sb_instagram_custom_js' ] = $sb_instagram_custom_js;
+            $options[ 'sb_instagram_disable_error_reporting' ] = $sb_instagram_disable_error_reporting;
             
         } //End customize tab post
         
@@ -548,6 +553,18 @@ function sb_instagram_settings_page() {
                 </tr>
             </tbody>
         </table>
+        <table class="form-table">
+            <tbody>
+                <tr valign="top">
+                    <th class="bump-left"><label for="sb_instagram_disable_error_reporting" class="bump-left"><?php _e("Disable WordPress Debug"); ?></label></th>
+                    <td>
+                        <input name="sb_instagram_disable_error_reporting" type="checkbox" id="sb_instagram_disable_error_reporting" <?php if($sb_instagram_disable_error_reporting == true) echo "checked"; ?> />
+                        <label for="sb_instagram_disable_error_reporting"><?php _e('Yes'); ?></label>
+                        <i style="color: #666; font-size: 11px; margin-left: 5px;"><?php _e('Not recommended'); ?></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
         <?php submit_button(); ?>
 
@@ -572,8 +589,8 @@ function sb_instagram_settings_page() {
         <code>[instagram-feed num=9 cols=3]</code></p>
         <p>You can display as many different feeds as you like, on either the same page or on different pages, by just using the shortcode options below. For example:<br />
         <code>[instagram-feed]</code><br />
-        <code>[instagram-feed id="12986477"]</code><br />
-        <code>[instagram-feed id="12986477,13460080" num=4 cols=4 showfollow=false]</code>
+        <code>[instagram-feed id="ANOTHER_USER_ID"]</code><br />
+        <code>[instagram-feed id="ANOTHER_USER_ID, YET_ANOTHER_USER_ID" num=4 cols=4 showfollow=false]</code>
         </p>
         <p><?php _e("See the table below for a full list of available shortcode options:"); ?></p>
 
@@ -590,8 +607,8 @@ function sb_instagram_settings_page() {
                 <tr class="sbi_table_header"><td colspan=3><?php _e("Configure Options"); ?></td></tr>
                 <tr class="sbi_pro">
                     <td>type</td>
-                    <td><?php _e("Display photos from a User ID (user) or Hashtag (hashtag)"); ?></td>
-                    <td><code>[instagram-feed type=hashtag]</code></td>
+                    <td><?php _e("Display photos from a User ID (user)<br />Display posts from a Hashtag (hashtag)"); ?></td>
+                    <td><code>[instagram-feed type=user]</code><br /><code>[instagram-feed type=hashtag]</code></td>
                 </tr>
                 <tr>
                     <td>id</td>
@@ -727,7 +744,7 @@ function sb_instagram_settings_page() {
                 <tr>
                     <td>showfollow</td>
                     <td><?php _e("Whether to show the 'Follow on Instagram' button. 'true' or 'false'."); ?></td>
-                    <td><code>[instagram-feed showfollow=true]</code></td>
+                    <td><code>[instagram-feed showfollow=false]</code></td>
                 </tr>
                 <tr>
                     <td>followcolor</td>
