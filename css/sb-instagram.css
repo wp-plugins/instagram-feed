@@ -97,9 +97,6 @@
   max-width: 100% !important;
   opacity: 1 !important;
 }
-#sb_instagram img.sbi_hide{
-  display: none;
-}
 #sb_instagram .sbi_link{
   display: none;
   position: absolute;

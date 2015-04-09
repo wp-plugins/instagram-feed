@@ -90,7 +90,7 @@ function sbi_init(){
                 //Add the header
                 $self.find('.sb_instagram_header').prepend( $header );
                 //Change the URL of the follow button
-                if( $self.find('.sbi_follow_btn').length ) $self.find('.sbi_follow_btn a').prop('href', 'http://instagram.com/' + data.data.username )
+                if( $self.find('.sbi_follow_btn').length ) $self.find('.sbi_follow_btn a').attr('href', 'http://instagram.com/' + data.data.username )
             }
         });
 
@@ -104,7 +104,7 @@ function sbi_init(){
                 sortBy: sortby,
                 resolution: imgRes,
                 limit: parseInt( num, 10 ),
-                template: '<div class="sbi_item sbi_type_{{model.type}} sbi_new" id="sbi_{{id}}" data-date="{{model.created_time_raw}}"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{caption}}" class="sbi_hide" /></a></div></div>',
+                template: '<div class="sbi_item sbi_type_{{model.type}} sbi_new" id="sbi_{{id}}" data-date="{{model.created_time_raw}}"><div class="sbi_photo_wrap"><a class="sbi_photo" href="{{link}}" target="_blank"><img src="{{image}}" alt="{{caption}}" /></a></div></div>',
                 filter: function(image) {
                     //Create time for sorting
                     var date = new Date(image.created_time*1000),
@@ -142,9 +142,9 @@ function sbi_init(){
                     });
 
                     //Only show images once they are fully loaded. Prevents issue in Firefox where alt text is shown initially before images appear.
-                    jQuery('#sb_instagram .sbi_new img').on('load', function() {
-                        jQuery(this).removeClass('sbi_hide');
-                    });
+                    // jQuery('#sb_instagram .sbi_new img').on('load', function() {
+                    //     jQuery(this).removeClass('sbi_hide');
+                    // });
 
 
                     //Sort posts by date
