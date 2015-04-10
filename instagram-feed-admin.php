@@ -59,7 +59,6 @@ function sb_instagram_settings_page() {
         //Misc
         'sb_instagram_custom_css'           => '',
         'sb_instagram_custom_js'            => '',
-        'sb_instagram_disable_error_reporting'      => false,
     );
     //Save defaults in an array
     $options = wp_parse_args(get_option('sb_instagram_settings'), $sb_instagram_settings_defaults);
@@ -97,7 +96,6 @@ function sb_instagram_settings_page() {
     //Misc
     $sb_instagram_custom_css = $options[ 'sb_instagram_custom_css' ];
     $sb_instagram_custom_js = $options[ 'sb_instagram_custom_js' ];
-    $sb_instagram_disable_error_reporting = $options[ 'sb_instagram_disable_error_reporting' ];
 
     // See if the user has posted us some information. If they did, this hidden field will be set to 'Y'.
     if( isset($_POST[ $sb_instagram_settings_hidden_field ]) && $_POST[ $sb_instagram_settings_hidden_field ] == 'Y' ) {
@@ -143,7 +141,6 @@ function sb_instagram_settings_page() {
             //Misc
             $sb_instagram_custom_css = $_POST[ 'sb_instagram_custom_css' ];
             $sb_instagram_custom_js = $_POST[ 'sb_instagram_custom_js' ];
-            (isset($_POST[ 'sb_instagram_disable_error_reporting' ])) ? $sb_instagram_disable_error_reporting = $_POST[ 'sb_instagram_disable_error_reporting' ] : $sb_instagram_disable_error_reporting = '';
 
 
             $options[ 'sb_instagram_width' ] = $sb_instagram_width;
@@ -173,7 +170,6 @@ function sb_instagram_settings_page() {
             //Misc
             $options[ 'sb_instagram_custom_css' ] = $sb_instagram_custom_css;
             $options[ 'sb_instagram_custom_js' ] = $sb_instagram_custom_js;
-            $options[ 'sb_instagram_disable_error_reporting' ] = $sb_instagram_disable_error_reporting;
             
         } //End customize tab post
         
@@ -549,18 +545,6 @@ function sb_instagram_settings_page() {
                 <tr valign="top">
                     <td>
                         <textarea name="sb_instagram_custom_js" id="sb_instagram_custom_js" style="width: 70%;" rows="7"><?php esc_attr_e( stripslashes($sb_instagram_custom_js) ); ?></textarea>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="form-table">
-            <tbody>
-                <tr valign="top">
-                    <th class="bump-left"><label for="sb_instagram_disable_error_reporting" class="bump-left"><?php _e("Disable WordPress Debug"); ?></label></th>
-                    <td>
-                        <input name="sb_instagram_disable_error_reporting" type="checkbox" id="sb_instagram_disable_error_reporting" <?php if($sb_instagram_disable_error_reporting == true) echo "checked"; ?> />
-                        <label for="sb_instagram_disable_error_reporting"><?php _e('Yes'); ?></label>
-                        <i style="color: #666; font-size: 11px; margin-left: 5px;"><?php _e('Not recommended'); ?></i>
                     </td>
                 </tr>
             </tbody>
