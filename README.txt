@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.1
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -186,6 +186,9 @@ For more FAQs related to the Instagram Feed plugin please visit the [FAQ section
 7. The Instagram Feed plugin Settings pages
 
 == Changelog ==
+= 1.3.7 =
+* Fix: Fixed an issue with double quotes in photo captions (used in the photo alt tags) which caused a formatting issue
+
 = 1.3.6 =
 * Fix: Fixed an issue introduced in version 1.3.4 which was causing theme settings to not be applied in some themes
 

@@ -111,6 +111,10 @@ function sbi_init(){
                         time = date.getTime();
                     image.created_time_raw = time;
 
+                    //Replace double quotes in the captions with the HTML symbol
+                    //Always check to make sure it exists
+                    if(image.caption != null) image.caption.text = image.caption.text.replace(/"/g, "&quot;");
+
                     return true;
                 },
                 userId: parseInt( entry, 10 ),
