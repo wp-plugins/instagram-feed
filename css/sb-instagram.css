@@ -219,7 +219,8 @@
 #sb_instagram .sb_instagram_header a{
   text-decoration: none;
 }
-#sb_instagram .sbi_header_text *{
+#sb_instagram .sbi_header_text .sbi_bio,
+#sb_instagram .sbi_header_text h3{
   float: left;
   clear: both;
   width: auto;
@@ -236,6 +237,9 @@
 }
 #sb_instagram .sb_instagram_header h3.sbi_no_bio{
   padding-top: 9px !important;
+}
+#sb_instagram .sbi_header_text img.emoji{
+  margin-right: 3px !important;
 }
 
 
