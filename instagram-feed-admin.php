@@ -206,7 +206,10 @@ function sb_instagram_settings_page() {
                     <h3><?php _e('Configure'); ?></h3>
 
                     <div id="sbi_config">
-                        <a href="https://instagram.com/oauth/authorize/?client_id=97584dabe06548f99b54d318f8db509d&redirect_uri=https://smashballoon.com/instagram-feed/instagram-token-plugin/?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token" class="sbi_admin_btn"><?php _e('Log in and get my Access Token and User ID'); ?></a>
+                        <!-- <a href="https://instagram.com/oauth/authorize/?client_id=97584dabe06548f99b54d318f8db509d&redirect_uri=https://smashballoon.com/instagram-feed/instagram-token-plugin/?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token" class="sbi_admin_btn"><?php _e('Log in and get my Access Token and User ID'); ?></a> -->
+                        <a href="https://instagram.com/oauth/authorize/?client_id=1654d0c81ad04754a898d89315bec227&redirect_uri=https://smashballoon.com/instagram-feed/instagram-token-plugin/?return_uri=<?php echo admin_url('admin.php?page=sb-instagram-feed'); ?>&response_type=token" class="sbi_admin_btn"><?php _e('Log in and get my Access Token and User ID'); ?></a>
+
+
                     </div>
                     
                     <tr valign="top">
@@ -236,13 +239,22 @@ function sb_instagram_settings_page() {
                                 <?php _e("<p>Please be sure to enter your numeric <b>User ID</b> and not your Username. You can find your User ID by clicking the blue Instagram Login button above, or by entering your username into <a href='http://www.otzberg.net/iguserid/' target='_blank'>this tool</a>.</p>"); ?>
                             </div>
                             
-                            <span class="sbi_pro">
+                            <span class="sbi_pro sbi_row">
                                 <input disabled type="radio" name="sb_instagram_type" id="sb_instagram_type_hashtag" value="hashtag" <?php if($sb_instagram_type == "hashtag") echo "checked"; ?> />
                                 <label class="sbi_radio_label" for="sb_instagram_type_hashtag">Hashtag:</label>
                                 <input readonly type="text" size="25" />
                                 &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a><span class="sbi_note"> - <a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to show posts by Hashtag</a></span>
                                 <p class="sbi_tooltip"><?php _e("Display posts from a specific hashtag instead of from a user"); ?></p>
                             </span>
+
+                            <span class="sbi_pro sbi_row">
+                                <input disabled type="radio" name="sb_instagram_type" id="sb_instagram_type_location" value="location" <?php if($sb_instagram_type == "location") echo "checked"; ?> />
+                                <label class="sbi_radio_label" for="sb_instagram_type_location">Location:</label>
+                                <input readonly type="text" size="25" />
+                                &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a><span class="sbi_note"> - <a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to show posts by Location</a></span>
+                                <p class="sbi_tooltip"><?php _e("Display posts from an Instagram location ID or location coordinates."); ?></p>
+                            </span>
+
                             <br />
                             <span class="sbi_note" style="margin: 10px 0 0 0; display: block;"><?php _e('Separate multiple IDs or hashtags using commas'); ?></span>
                            
@@ -408,17 +420,14 @@ function sb_instagram_settings_page() {
                             <p class="sbi_tooltip"><?php _e("By default on mobile devices the layout automatically changes to use fewer columns. Checking this setting disables the mobile layout."); ?></p>
                     </td>
                 </tr>
-
-                <tr valign="top" class="sbi_pro">
-                    <th scope="row"><label><?php _e('Hide Photos'); ?></label></th>
-                    <td>
-                        <span class="sbi_note"><a href="https://smashballoon.com/instagram-feed/" target="_blank"><?php _e('Upgrade to Pro to enable this feature.'); ?></a></span>
-                    </td>
-                </tr>
             </tbody>
         </table>
 
         <?php submit_button(); ?>
+
+        <hr />
+        <h3><?php _e("Carousel"); ?></h3>
+        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Carousels</a></p>
 
         <hr />
         <h3><?php _e("Header"); ?></h3>
@@ -522,6 +531,71 @@ function sb_instagram_settings_page() {
             </tbody>
         </table>
 
+
+
+
+        <hr id="filtering" />
+        <h3><?php _e('Post Filtering'); ?></h3>
+        <table class="form-table">
+            <tbody>
+                <tr valign="top" class="sbi_pro">
+                    <th scope="row"><label><?php _e('Remove photos containing these words or hashtags'); ?></label></th>
+                    <td>
+                       <input name="sb_instagram_exclude_words" id="sb_instagram_exclude_words" type="text" style="width: 70%;" value="" />
+                        <br />
+                        <span class="sbi_note" style="margin-left: 0;"><?php _e('Separate words/hashtags using commas'); ?></span>
+                        &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
+                            <p class="sbi_tooltip"><?php _e("You can use this setting to remove photos which contain certain words or hashtags in the caption. Separate multiple words or hashtags using commas."); ?></p>
+                    </td>
+                </tr>
+
+                <tr valign="top" class="sbi_pro">
+                    <th scope="row"><label><?php _e('Show photos containing these words or hashtags'); ?></label></th>
+                    <td>
+                        <input name="sb_instagram_include_words" id="sb_instagram_include_words" type="text" style="width: 70%;" value="" />
+                        <br />
+                        <span class="sbi_note" style="margin-left: 0;"><?php _e('Separate words/hashtags using commas'); ?></span>
+                        &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
+                            <p class="sbi_tooltip"><?php _e("You can use this setting to only show photos which contain certain words or hashtags in the caption. For example, adding <code>sheep, cow, dog</code> will show any photos which contain either the word sheep, cow, or dog. Separate multiple words or hashtags using commas."); ?></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Post Filtering options</a></p>
+
+
+        <hr id="moderation" />
+        <h3><?php _e('Moderation'); ?></h3>
+        <table class="form-table">
+            <tbody>
+                <tr valign="top" class="sbi_pro">
+                    <th scope="row"><label><?php _e('Hide specific photos'); ?></label></th>
+                    <td>
+                        <textarea name="sb_instagram_hide_photos" id="sb_instagram_hide_photos" style="width: 70%;" rows="3"></textarea>
+                        <br />
+                        <span class="sbi_note" style="margin-left: 0;"><?php _e('Separate IDs using commas'); ?></span>
+                        &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
+                            <p class="sbi_tooltip"><?php _e("You can use this setting to hide specific photos in your feed. Just click the 'Hide Photo' link in the photo pop-up in your feed to get the ID of the photo, then copy and paste it into this text box."); ?></p>
+                    </td>
+                </tr>
+
+                <tr valign="top" class="sbi_pro">
+                    <th scope="row"><label><?php _e('Block users'); ?></label></th>
+                    <td>
+                        <input name="sb_instagram_block_users" id="sb_instagram_block_users" type="text" style="width: 70%;" value="" />
+                        <br />
+                        <span class="sbi_note" style="margin-left: 0;"><?php _e('Separate usernames using commas'); ?></span>
+                        &nbsp;<a class="sbi_tooltip_link sbi_pro" href="JavaScript:void(0);"><?php _e("What is this?"); ?></a>
+                            <p class="sbi_tooltip"><?php _e("You can use this setting to block photos from certain users in your feed. Just enter the usernames here which you want to block. Separate multiple usernames using commas."); ?></p>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <p style="padding-bottom: 18px;"><a href="https://smashballoon.com/instagram-feed/" target="_blank">Upgrade to Pro to enable Moderation options</a></p>
+
+
+
         <hr />
         <h3><?php _e('Misc'); ?></h3>
 
@@ -591,8 +665,8 @@ function sb_instagram_settings_page() {
                 <tr class="sbi_table_header"><td colspan=3><?php _e("Configure Options"); ?></td></tr>
                 <tr class="sbi_pro">
                     <td>type</td>
-                    <td><?php _e("Display photos from a User ID (user)<br />Display posts from a Hashtag (hashtag)"); ?></td>
-                    <td><code>[instagram-feed type=user]</code><br /><code>[instagram-feed type=hashtag]</code></td>
+                    <td><?php _e("Display photos from a User ID (user)<br />Display posts from a Hashtag (hashtag)<br />Display posts from a Location (location)<br />Display posts from Coordinates (coordinates)"); ?></td>
+                    <td><code>[instagram-feed type=user]</code><br /><code>[instagram-feed type=hashtag]</code><br/><code>[instagram-feed type=location]</code><br /><code>[instagram-feed type=coordinates]</code></td>
                 </tr>
                 <tr>
                     <td>id</td>
@@ -603,6 +677,16 @@ function sb_instagram_settings_page() {
                     <td>hashtag</td>
                     <td><?php _e('Any hashtag. Separate multiple IDs by commas.'); ?></td>
                     <td><code>[instagram-feed hashtag="#awesome"]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>location</td>
+                    <td><?php _e('The ID of the location. Separate multiple IDs by commas.'); ?></td>
+                    <td><code>[instagram-feed location="213456451"]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>coordinates</td>
+                    <td><?php _e('The coordinates to display photos from. Separate multiple sets of coordinates by commas.<br />The format is (latitude,longitude,distance).'); ?></td>
+                    <td><code>[instagram-feed coordinates="(25.76,-80.19,500)"]</code></td>
                 </tr>
 
                 <tr class="sbi_table_header"><td colspan=3><?php _e("Customize Options"); ?></td></tr>
@@ -689,6 +773,35 @@ function sb_instagram_settings_page() {
                     <td><?php _e("The text/icon color when hovering over a photo. Any hex color code."); ?></td>
                     <td><code>[instagram-feed hovertextcolor=#fff]</code></td>
                 </tr>
+
+
+                <tr class="sbi_table_header"><td colspan=3><?php _e("Carousel Options"); ?></td></tr>
+                <tr class="sbi_pro">
+                    <td>carousel</td>
+                    <td><?php _e("Display this feed as a carousel"); ?></td>
+                    <td><code>[instagram-feed carousel=true]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>carouselarrows</td>
+                    <td><?php _e("Display directional arrows on the carousel"); ?></td>
+                    <td><code>[instagram-feed carouselarrows=true]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>carouselpag</td>
+                    <td><?php _e("Display pagination links below the carousel"); ?></td>
+                    <td><code>[instagram-feed carouselpag=true]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>carouselautoplay</td>
+                    <td><?php _e("Make the carousel autoplay"); ?></td>
+                    <td><code>[instagram-feed carouselautoplay=true]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>carouseltime</td>
+                    <td><?php _e("The interval time between slides for autoplay. Time in miliseconds."); ?></td>
+                    <td><code>[instagram-feed carouseltime=8000]</code></td>
+                </tr>
+
 
                 <tr class="sbi_table_header"><td colspan=3><?php _e("Header Options"); ?></td></tr>
                 <tr>
@@ -783,6 +896,18 @@ function sb_instagram_settings_page() {
                     <td>likessize</td>
                     <td><?php _e("The size of the Likes &amp; Comments. Any number."); ?></td>
                     <td><code>[instagram-feed likessize=14]</code></td>
+                </tr>
+
+                <tr class="sbi_table_header"><td colspan=3><?php _e("Post Filtering Options"); ?></td></tr>
+                <tr class="sbi_pro">
+                    <td>excludewords</td>
+                    <td><?php _e("Remove posts which contain certain words or hashtags in the caption."); ?></td>
+                    <td><code>[instagram-feed excludewords="bad, words"]</code></td>
+                </tr>
+                <tr class="sbi_pro">
+                    <td>includewords</td>
+                    <td><?php _e("Only display posts which contain certain words or hashtags in the caption."); ?></td>
+                    <td><code>[instagram-feed includewords="sunshine"]</code></td>
                 </tr>
 
             </tbody>

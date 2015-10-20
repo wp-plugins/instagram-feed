@@ -146,6 +146,10 @@
 }
 
 /* Pro only notices */
+#sbi_admin .sbi_row{
+	display: block;
+	width: 100%;
+}
 #sbi_admin .sbi_pro,
 #sbi_admin .sbi_pro label{
 	color: #999 !important;
