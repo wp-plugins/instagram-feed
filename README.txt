@@ -285,7 +285,7 @@ For more FAQs related to the Instagram Feed plugin please visit the [FAQ section
 * New: Added a full list of all available shortcode options to help you if customizing multiple Instagram feeds
 
 = 1.0.2 =
-* Fix: Fixed an issue with the Instagram login URL on the Settings page
+* Fix: Fixed an issue with the Instagram login URL on the plugin's Settings page
 
 = 1.0.1 =
 * Fix: Fixed an issue with the Instagram Feed 'Load More' button opening an empty browser window in Firefox
