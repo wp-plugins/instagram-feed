@@ -3,7 +3,7 @@ Contributors: smashballoon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram plugin, Instagram stream, Custom Instagram Feed, responsive Instagram, mobile Instagram, Instagram posts, Instagram wall, Instagram account
 Requires at least: 3.0
 Tested up to: 4.3.1
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -186,6 +186,10 @@ For more FAQs related to the Instagram Feed plugin please visit the [FAQ section
 7. The Instagram Feed plugin Settings pages
 
 == Changelog ==
+= 1.3.9 =
+* Fix: Fixed an issue where photos wouldn't appear in the Instagram feed if it was initially being hidden inside of a tab or some other element
+* Fix: Fixed an issue where the new image cropping fuction was failing to run on some sites and causing the images to appear as blank
+
 = 1.3.8 =
 * Fix: If you have uploaded a photo in portrait or landscape then the plugin will now display the square cropped version of the photo in your feed
 
