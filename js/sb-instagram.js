@@ -9,9 +9,6 @@ if(!sbi_js_exists){
 	//IE8 also doesn't offer the .bind() method triggered by the 'sortBy' property. Copy and paste the polyfill offered here:
 	if(!Function.prototype.bind){Function.prototype.bind=function(e){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable")}var t=Array.prototype.slice.call(arguments,1),n=this,r=function(){},i=function(){return n.apply(this instanceof r&&e?this:e,t.concat(Array.prototype.slice.call(arguments)))};r.prototype=this.prototype;i.prototype=new r;return i}}
 
-    /* Detect when element becomes visible. Used for when the feed is initially hidden, in a tab for example. https://github.com/shaunbowe/jquery.visibilityChanged */
-    !function(i){var n={callback:function(){},runOnLoad:!0,frequency:100,sbiPreviousVisibility:null},c={};c.sbiCheckVisibility=function(i,n){if(jQuery.contains(document,i[0])){var e=n.sbiPreviousVisibility,t=i.is(":visible");n.sbiPreviousVisibility=t,null==e?n.runOnLoad&&n.callback(i,t):e!==t&&n.callback(i,t),setTimeout(function(){c.sbiCheckVisibility(i,n)},n.frequency)}},i.fn.sbiVisibilityChanged=function(e){var t=i.extend({},n,e);return this.each(function(){c.sbiCheckVisibility(i(this),t)})}}(jQuery);
-
     function sbi_init(){
 
         jQuery('#sb_instagram.sbi').each(function(){
@@ -56,6 +53,9 @@ if(!sbi_js_exists){
                     } else {
                         imgRes = 'standard_resolution';
                     }
+
+                    //If the feed is hidden (eg; in a tab) then the width is returned as 100, and so auto set the res to be medium to cover most bases
+                    if( feedWidth <= 100 ) imgRes = 'low_resolution';
 
                     break;
                 case 'thumb':
@@ -177,22 +177,39 @@ if(!sbi_js_exists){
                         jQuery(window).resize(function(){
                             sbi_delay(function(){
                                 sbiSetPhotoHeight();
-                                sbiGetItemSize();
                             }, 500);
                         });
 
                         //Resize image height
                         function sbiSetPhotoHeight(){
+
                             if( imgRes !== 'thumbnail' ){
                                 var sbi_photo_width = $self.find('.sbi_photo').eq(0).innerWidth();
 
-                                //If the width is 0 then figure it out using the number of cols
-                                if( sbi_photo_width < 1 ) sbi_photo_width = ($self.find('#sbi_images').width() / parseInt(cols)) - (feedOptions.imagepadding*2);
+                                //Figure out number of columns for either desktop or mobile
+                                var sbi_num_cols = parseInt(cols);
+
+                                if( !$self.hasClass('sbi_disable_mobile') ){
+                                    var sbiWindowWidth = jQuery(window).width();
+                                    if( sbiWindowWidth < 640 && (parseInt(cols) > 2 && parseInt(cols) < 7 ) ) sbi_num_cols = 2;
+                                    if( sbiWindowWidth < 640 && (parseInt(cols) > 6 && parseInt(cols) < 11 ) ) sbi_num_cols = 4;
+                                    if( sbiWindowWidth <= 480 && parseInt(cols) > 2 ) sbi_num_cols = 1;
+                                  }
+
+                                //Figure out what the width should be using the number of cols
+                                var sbi_photo_width_manual = ( $self.find('#sbi_images').width() / sbi_num_cols ) - (feedOptions.imagepadding*2);
+
+                                //If the width is less than it should be then set it manually
+                                if( sbi_photo_width <= (sbi_photo_width_manual) ) sbi_photo_width = sbi_photo_width_manual;
 
                                 $self.find('.sbi_photo').css('height', sbi_photo_width);
                             }
+
                         }
                         sbiSetPhotoHeight();
+
+                        /* Detect when element becomes visible. Used for when the feed is initially hidden, in a tab for example. https://github.com/shaunbowe/jquery.visibilityChanged */
+                        !function(i){var n={callback:function(){},runOnLoad:!0,frequency:100,sbiPreviousVisibility:null},c={};c.sbiCheckVisibility=function(i,n){if(jQuery.contains(document,i[0])){var e=n.sbiPreviousVisibility,t=i.is(":visible");n.sbiPreviousVisibility=t,null==e?n.runOnLoad&&n.callback(i,t):e!==t&&n.callback(i,t),setTimeout(function(){c.sbiCheckVisibility(i,n)},n.frequency)}},i.fn.sbiVisibilityChanged=function(e){var t=i.extend({},n,e);return this.each(function(){c.sbiCheckVisibility(i(this),t)})}}(jQuery);
 
                         //If the feed is initially hidden (in a tab for example) then check for when it becomes visible and set then set the height
                         jQuery(".sbi").filter(':hidden').sbiVisibilityChanged({
@@ -201,17 +218,6 @@ if(!sbi_js_exists){
                             },
                             runOnLoad: false
                         });
-
-                        function sbiGetItemSize(){
-                          $self.removeClass('sbi_small sbi_medium');
-                          var sbiItemWidth = $self.find('.sbi_item').innerWidth();
-                          if( sbiItemWidth > 120 && sbiItemWidth < 240 ){
-                              $self.addClass('sbi_medium');
-                          } else if( sbiItemWidth <= 120 ){
-                              $self.addClass('sbi_small');
-                          }
-                        }
-                        sbiGetItemSize();
 
 
                         //Fade photos on hover
